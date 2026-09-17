@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+     ПЛАНЕРЫ ОГЭ И ЕГЭ · РАЗМЕТКА
+     Стили — styles.css, скрипты — script.js.
+     Здесь только структура и текст.
+     ═══════════════════════════════════════════════════════════════ -->
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover — чтобы фон уходил под «чёлку» iPhone,
+     а отступы контента считались через env(safe-area-inset-*) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBFAF9">
+<meta name="format-detection" content="telephone=no">
+
+<title>OG Daily Planners — планеры подготовки к ОГЭ и ЕГЭ, которые считают за тебя</title>
+<meta name="description" content="Планеры подготовки к ОГЭ и ЕГЭ в Google Таблицах: темы, пробники, журнал ошибок, режим и дневник. Проценты, оценки и слабые места считаются сами.">
+<meta property="og:title" content="OG Daily Planners — планеры подготовки к ОГЭ и ЕГЭ">
+<meta property="og:description" content="Шесть листов, которые превращают подготовку в систему. Всё считается само.">
+<meta property="og:type" content="website">
+
+
+<!-- ─── ЗНАЧКИ ────────────────────────────────────────────────────
+     SVG — для современных браузеров, PNG — для старых,
+     apple-touch-icon — для ярлыка на домашнем экране iPhone. -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- ─── ПРЕВЬЮ ПРИ ОТПРАВКЕ ССЫЛКИ ────────────────────────────────
+     Без og:image в телеграме и вконтакте приходит голая строка.
+     Размер 1200×630 — то, что просят все площадки. -->
+<meta property="og:image" content="https://planernya.ru/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://planernya.ru/">
+<meta property="og:site_name" content="OG Daily Planners">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://planernya.ru/og-image.jpg">
+<link rel="canonical" href="https://planernya.ru/">
+
+<!-- Узор первого экрана грузится сразу, а не в общей очереди:
+     без этого шапка полсекунды стоит пустой. -->
+<link rel="preload" as="image" href="bg/pattern-study.svg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- ─── РАЗМЕТКА ДЛЯ ПОИСКОВИКОВ ──────────────────────────────────
+     Яндекс и Google читают этот блок и показывают цену прямо
+     в выдаче, а вопросы — раскрывающимся списком под ссылкой.
+     Вопросы взяты из блока FAQ ниже: если правишь их там —
+     поправь и здесь, иначе поисковик покажет старый текст. -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://planernya.ru/#org",
+   "name": "OG Daily Planners",
+   "url": "https://planernya.ru/",
+   "logo": "https://planernya.ru/icon-512.png",
+   "email": "girlsmoom@yandex.ru",
+   "telephone": "+7 912 018-03-93"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://planernya.ru/#site",
+   "url": "https://planernya.ru/",
+   "name": "OG Daily Planners",
+   "inLanguage": "ru-RU",
+   "publisher": {
+    "@id": "https://planernya.ru/#org"
+   }
+  },
+  {
+   "@type": "Product",
+   "@id": "https://planernya.ru/#product",
+   "name": "Планеры подготовки к ОГЭ и ЕГЭ",
+   "description": "Шесть листов в Google Таблицах: начало, неделя, темы, пробники, школа, архив. Проценты, баллы и слабые темы считаются автоматически.",
+   "image": [
+    "https://planernya.ru/og-image.jpg"
+   ],
+   "brand": {
+    "@id": "https://planernya.ru/#org"
+   },
+   "category": "Образование",
+   "offers": {
+    "@type": "Offer",
+    "price": "899",
+    "priceCurrency": "RUB",
+    "availability": "https://schema.org/InStock",
+    "url": "https://planernya.ru/checkout.html"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://planernya.ru/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Нужно ли уметь работать с таблицами?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Нет. Все формулы уже внутри: ты только выбираешь из выпадающих списков и вписываешь числа. Из «умений» нужно уметь ставить галочки. Первым листом в планере идёт инструкция — что делать в первый день, в первую неделю и дальше."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Работает ли с телефона?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да, через приложение Google Таблицы. Отмечать галочки, вписывать баллы и смотреть сводку удобно. Первую настройку — выбрать предметы и подставить темы — лучше сделать с компьютера: там видно всю ширину листа."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Сколько времени занимает заполнение?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Пять минут в день: отметить статус темы, поставить галочки в режиме, записать пару строк в дневник. Плюс десять минут после каждого пробника — разобрать ошибки. Это единственная обязательная часть: без неё планер превращается в красивую таблицу без пользы."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Это точно поможет сдать лучше?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Планер не добавляет знаний — он показывает, где их нет. Гарантировать баллы было бы враньём. Что он реально даёт: ты перестаёшь готовиться вслепую и тратить время на темы, которые и так знаешь."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Как получу планер после оплаты?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ссылка на копию таблицы придёт сразу после оплаты. Открываешь, нажимаешь «Создать копию» — она становится твоей, никто кроме тебя её не видит. Доступ навсегда, обновления бесплатно."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="bold-hero">
+
+<!-- Первая цель при нажатии Tab: даёт перепрыгнуть меню и уйти
+     сразу к тексту. Видна только когда на ней фокус. -->
+<a class="skip" href="#main">Перейти к содержимому</a>
+
+<!-- ═══ НИТЬ · путь через этапы страницы ═══════════════════════
+     Линия петляет от шапки до подвала и уходит ЗА карточки:
+     видна в промежутках между блоками, скрывается под ними.
+     Так получается ощущение глубины и пути, а не рисунка поверх.
+
+     Путь лежит в растягиваемом SVG, а точки-остановки — обычные
+     элементы в процентах. Если бы кружки были внутри SVG, при
+     растяжении на всю высоту страницы их расплющило бы в овалы. -->
+<div class="thread" aria-hidden="true">
+  <svg viewBox="0 0 100 1000" preserveAspectRatio="none">
+    <path d="M 54 0 C 50.3 34.0 36.7 24.4 24.0 38.0 C 26.4 53.9 83.0 54.2 74.0 68.0 C 68.2 84.1 26.2 80.4 34.0 86.0 C 31.8 103.1 0.0 106.8 7.0 132.0 C 12.4 149.7 7.0 136.2 19.0 156.0 C 3.8 167.0 9.5 161.6 7.0 180.0 C -6.0 200.5 3.7 186.2 19.0 218.0 C 17.7 229.9 14.3 224.9 7.0 256.0 C 12.0 279.7 51.3 279.9 57.0 294.0 C 68.3 311.6 55.8 306.2 45.0 318.0 C 56.1 334.0 21.8 326.4 7.0 342.0 C 14.1 354.4 36.2 351.0 27.0 366.0 C 23.1 381.4 13.5 370.5 7.0 384.0 C -2.1 418.5 36.3 408.8 47.0 430.0 C 62.6 440.5 28.5 434.4 27.0 448.0 C 32.6 470.9 34.8 458.9 47.0 494.0 C 62.1 518.0 19.6 509.2 7.0 532.0 C 11.4 551.6 7.4 552.0 7.0 562.0 C 13.2 569.8 -2.1 574.0 7.0 586.0 C 10.6 600.9 47.5 609.3 37.0 624.0 C 43.1 638.5 78.6 641.4 87.0 654.0 C 86.2 674.2 79.3 663.6 93.0 700.0 C 99.9 712.6 99.7 722.6 93.0 738.0 C 88.7 752.1 82.5 743.3 93.0 756.0 C 81.8 770.8 78.0 763.3 73.0 774.0 C 76.9 794.2 34.8 802.0 33.0 820.0 C 27.5 853.8 53.3 825.8 53.0 866.0 C 43.1 881.4 2.8 878.8 13.0 890.0 C 6.7 901.8 34.8 900.9 25.0 928.0 C 34.4 962.6 41.7 942.9 55.0 974.0 C 47.5 984.3 106.3 983.7 93.0 1000.0" fill="none" stroke-width="2.4"
+          stroke-linecap="round" stroke-dasharray="10 13"
+          vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- Декор: цифры, знаки и куски формул. Лежат на том же слое,
+       что и нить, то есть ПОД содержимым — ничего не перекрывают
+       и не мешают нажимать. Позиции в процентах, поэтому
+       раскидываются по всей длине страницы, какой бы она ни была. -->
+  <div class="thread-marks">
+    <b class="c3" style="left:4.3%;top:1.21%;font-size:1.37rem;transform:rotate(7deg)">π</b>
+    <b class="c3" style="left:7.9%;top:2.38%;font-size:0.74rem;transform:rotate(3deg)">+</b>
+    <b class="c5" style="left:89.1%;top:2.83%;font-size:1.79rem;transform:rotate(6deg)">%</b>
+    <b class="c5" style="left:2.3%;top:4.07%;font-size:1.96rem;transform:rotate(10deg)">✓</b>
+    <b class="c6" style="left:11.2%;top:5.26%;font-size:1.16rem;transform:rotate(-23deg)">1</b>
+    <b class="c3" style="left:12.0%;top:5.87%;font-size:1.32rem;transform:rotate(21deg)">√</b>
+    <b class="c5" style="left:74.0%;top:7.47%;font-size:2.02rem;transform:rotate(5deg)">99</b>
+    <b class="c1" style="left:71.3%;top:8.03%;font-size:0.77rem;transform:rotate(12deg)">+</b>
+    <b class="c1" style="left:10.1%;top:8.03%;font-size:1.06rem;transform:rotate(4deg)">y</b>
+    <b class="c6" style="left:87.6%;top:9.52%;font-size:0.83rem;transform:rotate(-9deg)">✓</b>
+    <b class="c4" style="left:1.7%;top:9.52%;font-size:1.51rem;transform:rotate(-25deg)">25</b>
+    <b class="c4" style="left:9.6%;top:10.48%;font-size:0.86rem;transform:rotate(-4deg)">∞</b>
+    <b class="c2" style="left:4.3%;top:11.63%;font-size:0.93rem;transform:rotate(-27deg)">%</b>
+    <b class="c4" style="left:98.1%;top:12.02%;font-size:1.39rem;transform:rotate(-11deg)">9 кл</b>
+    <b class="c3" style="left:94.2%;top:13.43%;font-size:1.34rem;transform:rotate(-16deg)">5</b>
+    <b class="c1" style="left:1.9%;top:14.05%;font-size:1.62rem;transform:rotate(-22deg)">+</b>
+    <b class="c4" style="left:10.5%;top:15.43%;font-size:1.1rem;transform:rotate(28deg)">∞</b>
+    <b class="c2" style="left:93.1%;top:15.43%;font-size:1.93rem;transform:rotate(13deg)">99</b>
+    <b class="c3" style="left:96.9%;top:16.4%;font-size:1.14rem;transform:rotate(-16deg)">cos</b>
+    <b class="c5" style="left:98.3%;top:17.67%;font-size:1.25rem;transform:rotate(6deg)">балл</b>
+    <b class="c6" style="left:98.2%;top:18.44%;font-size:1.13rem;transform:rotate(-23deg)">★</b>
+    <b class="c1" style="left:3.1%;top:19.38%;font-size:1.0rem;transform:rotate(24deg)">✓</b>
+    <b class="c1" style="left:7.6%;top:20.63%;font-size:1.6rem;transform:rotate(24deg)">ЕГЭ</b>
+    <b class="c1" style="left:4.6%;top:20.63%;font-size:1.65rem;transform:rotate(18deg)">12</b>
+    <b class="c4" style="left:11.6%;top:21.69%;font-size:1.61rem;transform:rotate(19deg)">36</b>
+    <b class="c1" style="left:43.3%;top:22.87%;font-size:1.3rem;transform:rotate(-21deg)">tg</b>
+    <b class="c5" style="left:12.1%;top:23.33%;font-size:2.01rem;transform:rotate(12deg)">4</b>
+    <b class="c5" style="left:2.3%;top:24.97%;font-size:1.7rem;transform:rotate(-17deg)">78</b>
+    <b class="c5" style="left:90.7%;top:25.89%;font-size:1.31rem;transform:rotate(8deg)">n!</b>
+    <b class="c6" style="left:70.0%;top:26.67%;font-size:1.13rem;transform:rotate(14deg)">балл</b>
+    <b class="c5" style="left:90.9%;top:26.67%;font-size:1.4rem;transform:rotate(22deg)">0</b>
+    <b class="c6" style="left:96.2%;top:27.88%;font-size:0.9rem;transform:rotate(-12deg)">25</b>
+    <b class="c4" style="left:90.5%;top:28.83%;font-size:1.52rem;transform:rotate(-24deg)">√</b>
+    <b class="c5" style="left:12.0%;top:29.69%;font-size:1.43rem;transform:rotate(-1deg)">y</b>
+    <b class="c4" style="left:96.3%;top:31.0%;font-size:1.98rem;transform:rotate(-18deg)">x²</b>
+    <b class="c3" style="left:94.0%;top:31.82%;font-size:2.03rem;transform:rotate(0deg)">9 кл</b>
+    <b class="c3" style="left:20.4%;top:31.82%;font-size:1.62rem;transform:rotate(10deg)">12</b>
+    <b class="c2" style="left:63.9%;top:33.28%;font-size:0.77rem;transform:rotate(8deg)">≠</b>
+    <b class="c2" style="left:11.7%;top:33.82%;font-size:1.16rem;transform:rotate(16deg)">∑</b>
+    <b class="c6" style="left:7.4%;top:34.66%;font-size:1.59rem;transform:rotate(-26deg)">0</b>
+    <b class="c1" style="left:88.2%;top:34.66%;font-size:0.74rem;transform:rotate(18deg)">−</b>
+    <b class="c5" style="left:28.6%;top:35.92%;font-size:1.02rem;transform:rotate(28deg)">36</b>
+    <b class="c3" style="left:3.6%;top:37.31%;font-size:1.19rem;transform:rotate(-9deg)">1</b>
+    <b class="c6" style="left:7.5%;top:37.77%;font-size:1.62rem;transform:rotate(-13deg)">a²</b>
+    <b class="c6" style="left:7.8%;top:37.77%;font-size:1.27rem;transform:rotate(1deg)">78</b>
+    <b class="c3" style="left:8.9%;top:38.83%;font-size:1.74rem;transform:rotate(-7deg)">sin</b>
+    <b class="c1" style="left:89.6%;top:40.45%;font-size:2.05rem;transform:rotate(7deg)">×</b>
+    <b class="c4" style="left:29.4%;top:40.99%;font-size:1.02rem;transform:rotate(3deg)">→</b>
+    <b class="c6" style="left:5.0%;top:40.99%;font-size:1.17rem;transform:rotate(10deg)">π</b>
+    <b class="c1" style="left:92.6%;top:42.25%;font-size:1.84rem;transform:rotate(-25deg)">≤</b>
+    <b class="c3" style="left:89.9%;top:43.0%;font-size:1.29rem;transform:rotate(27deg)">%</b>
+    <b class="c2" style="left:87.4%;top:44.29%;font-size:0.85rem;transform:rotate(-18deg)">b²</b>
+    <b class="c6" style="left:95.7%;top:44.29%;font-size:1.22rem;transform:rotate(25deg)">π</b>
+    <b class="c3" style="left:4.8%;top:45.31%;font-size:1.71rem;transform:rotate(-17deg)">x</b>
+    <b class="c1" style="left:96.9%;top:46.42%;font-size:1.81rem;transform:rotate(-27deg)">∞</b>
+    <b class="c2" style="left:94.4%;top:46.42%;font-size:0.87rem;transform:rotate(-9deg)">99</b>
+    <b class="c5" style="left:89.5%;top:47.57%;font-size:1.08rem;transform:rotate(-3deg)">3</b>
+    <b class="c3" style="left:2.8%;top:48.1%;font-size:1.29rem;transform:rotate(0deg)">∑</b>
+    <b class="c2" style="left:94.2%;top:48.1%;font-size:1.78rem;transform:rotate(23deg)">cos</b>
+    <b class="c6" style="left:10.4%;top:49.12%;font-size:1.26rem;transform:rotate(-27deg)">78</b>
+    <b class="c5" style="left:6.0%;top:50.23%;font-size:0.91rem;transform:rotate(27deg)">√</b>
+    <b class="c2" style="left:3.4%;top:51.53%;font-size:1.96rem;transform:rotate(6deg)">✓</b>
+    <b class="c4" style="left:95.9%;top:52.19%;font-size:1.11rem;transform:rotate(5deg)">5</b>
+    <b class="c3" style="left:6.2%;top:53.34%;font-size:1.2rem;transform:rotate(17deg)">99</b>
+    <b class="c3" style="left:58.2%;top:54.83%;font-size:1.85rem;transform:rotate(-22deg)">√</b>
+    <b class="c3" style="left:11.1%;top:55.55%;font-size:1.3rem;transform:rotate(28deg)">−</b>
+    <b class="c1" style="left:5.0%;top:56.74%;font-size:2.07rem;transform:rotate(28deg)">25</b>
+    <b class="c6" style="left:74.6%;top:57.74%;font-size:0.79rem;transform:rotate(19deg)">78</b>
+    <b class="c6" style="left:89.7%;top:58.73%;font-size:0.92rem;transform:rotate(-14deg)">log</b>
+    <b class="c3" style="left:6.5%;top:59.37%;font-size:1.57rem;transform:rotate(-9deg)">99</b>
+    <b class="c2" style="left:5.9%;top:60.45%;font-size:1.25rem;transform:rotate(1deg)">+</b>
+    <b class="c5" style="left:98.2%;top:61.9%;font-size:0.73rem;transform:rotate(15deg)">cos</b>
+    <b class="c1" style="left:76.1%;top:61.9%;font-size:0.83rem;transform:rotate(2deg)">÷</b>
+    <b class="c3" style="left:90.1%;top:62.66%;font-size:2.06rem;transform:rotate(21deg)">≤</b>
+    <b class="c2" style="left:41.6%;top:63.87%;font-size:0.76rem;transform:rotate(9deg)">99</b>
+    <b class="c5" style="left:88.6%;top:64.9%;font-size:1.48rem;transform:rotate(-18deg)">1</b>
+    <b class="c2" style="left:12.4%;top:64.9%;font-size:1.41rem;transform:rotate(16deg)">балл</b>
+    <b class="c5" style="left:6.0%;top:65.78%;font-size:1.76rem;transform:rotate(3deg)">∞</b>
+    <b class="c1" style="left:93.0%;top:65.78%;font-size:1.5rem;transform:rotate(-18deg)">π</b>
+    <b class="c4" style="left:2.6%;top:66.9%;font-size:2.02rem;transform:rotate(-21deg)">≤</b>
+    <b class="c2" style="left:97.6%;top:67.86%;font-size:0.8rem;transform:rotate(2deg)">2</b>
+    <b class="c3" style="left:89.9%;top:68.88%;font-size:1.68rem;transform:rotate(14deg)">9</b>
+    <b class="c1" style="left:73.6%;top:70.18%;font-size:0.71rem;transform:rotate(-8deg)">8</b>
+    <b class="c6" style="left:89.7%;top:71.02%;font-size:1.32rem;transform:rotate(-1deg)">8</b>
+    <b class="c5" style="left:27.9%;top:71.94%;font-size:1.4rem;transform:rotate(15deg)">∑</b>
+    <b class="c2" style="left:8.0%;top:71.94%;font-size:0.94rem;transform:rotate(28deg)">25</b>
+    <b class="c1" style="left:87.4%;top:73.17%;font-size:1.66rem;transform:rotate(25deg)">≤</b>
+    <b class="c3" style="left:10.4%;top:74.19%;font-size:1.31rem;transform:rotate(-16deg)">✓</b>
+    <b class="c1" style="left:87.8%;top:74.19%;font-size:0.76rem;transform:rotate(20deg)">∞</b>
+    <b class="c4" style="left:7.8%;top:75.42%;font-size:0.93rem;transform:rotate(-4deg)">÷</b>
+    <b class="c3" style="left:2.7%;top:76.29%;font-size:1.37rem;transform:rotate(13deg)">=</b>
+    <b class="c5" style="left:9.3%;top:76.29%;font-size:1.72rem;transform:rotate(-22deg)">78</b>
+    <b class="c3" style="left:12.0%;top:77.51%;font-size:1.46rem;transform:rotate(-5deg)">x²</b>
+    <b class="c6" style="left:92.7%;top:77.99%;font-size:1.93rem;transform:rotate(6deg)">→</b>
+    <b class="c6" style="left:91.3%;top:79.3%;font-size:0.88rem;transform:rotate(2deg)">★</b>
+    <b class="c5" style="left:89.0%;top:80.19%;font-size:1.72rem;transform:rotate(-22deg)">9</b>
+    <b class="c5" style="left:89.7%;top:81.53%;font-size:1.59rem;transform:rotate(11deg)">y</b>
+    <b class="c3" style="left:3.6%;top:82.08%;font-size:1.02rem;transform:rotate(26deg)">−</b>
+    <b class="c2" style="left:90.8%;top:83.38%;font-size:1.33rem;transform:rotate(0deg)">9 кл</b>
+    <b class="c4" style="left:87.2%;top:84.67%;font-size:2.02rem;transform:rotate(19deg)">ФИПИ</b>
+    <b class="c4" style="left:92.9%;top:85.73%;font-size:1.87rem;transform:rotate(-25deg)">ФИПИ</b>
+    <b class="c4" style="left:9.4%;top:86.28%;font-size:1.91rem;transform:rotate(-13deg)">sin</b>
+    <b class="c4" style="left:88.9%;top:87.27%;font-size:0.71rem;transform:rotate(15deg)">%</b>
+    <b class="c5" style="left:88.4%;top:88.62%;font-size:0.9rem;transform:rotate(-8deg)">78</b>
+    <b class="c1" style="left:6.5%;top:89.89%;font-size:1.07rem;transform:rotate(-2deg)">n!</b>
+    <b class="c6" style="left:98.2%;top:90.32%;font-size:0.85rem;transform:rotate(17deg)">sin</b>
+    <b class="c5" style="left:98.1%;top:90.32%;font-size:0.87rem;transform:rotate(-25deg)">+</b>
+    <b class="c4" style="left:91.9%;top:91.94%;font-size:1.34rem;transform:rotate(-22deg)">7</b>
+    <b class="c3" style="left:97.2%;top:91.94%;font-size:0.9rem;transform:rotate(-14deg)">2</b>
+    <b class="c4" style="left:39.5%;top:92.78%;font-size:1.01rem;transform:rotate(-2deg)">→</b>
+    <b class="c1" style="left:38.3%;top:94.0%;font-size:1.62rem;transform:rotate(-25deg)">11 кл</b>
+    <b class="c6" style="left:89.3%;top:95.02%;font-size:0.93rem;transform:rotate(-23deg)">=</b>
+    <b class="c2" style="left:90.7%;top:95.86%;font-size:1.93rem;transform:rotate(-27deg)">4</b>
+    <b class="c6" style="left:37.6%;top:95.86%;font-size:1.43rem;transform:rotate(13deg)">2</b>
+    <b class="c1" style="left:8.5%;top:96.56%;font-size:1.05rem;transform:rotate(14deg)">log</b>
+    <b class="c6" style="left:7.8%;top:97.75%;font-size:1.64rem;transform:rotate(22deg)">25</b>
+    <b class="c1" style="left:90.4%;top:97.75%;font-size:1.11rem;transform:rotate(28deg)">=</b>
+    <b class="c4" style="left:10.9%;top:99.17%;font-size:1.62rem;transform:rotate(25deg)">5</b>
+  </div>
+  <div class="thread-dots">
+    <i style="left:24.0%;top:3.8%"></i>
+    <i style="left:19.0%;top:15.6%"></i>
+    <i style="left:57.0%;top:29.4%"></i>
+    <i style="left:7.0%;top:38.4%"></i>
+    <i style="left:7.0%;top:53.2%"></i>
+    <i style="left:87.0%;top:65.4%"></i>
+    <i style="left:73.0%;top:77.4%"></i>
+    <i style="left:25.0%;top:92.8%"></i>
+  </div>
+</div>
+
+
+<!-- Полоса прочтения. Показывает, сколько страницы позади —
+     на длинном лендинге это снимает ощущение «а сколько ещё». -->
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<!-- Коты — настоящие фотографии, лежат в папке cats/.
+     Раньше здесь были нарисованные кодом мордочки; фото живее
+     и школьника цепляет сильнее. Каждый кот стоит там, где
+     подходит по смыслу: кот в дырке — у «загляни внутрь»,
+     спящий — у бесплатного подарка, удивлённый — у отзывов. -->
+
+<!-- ═══ ШАПКА · липкая, уплотняется при прокрутке ═══════════════ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <!-- Логотип: иконка календаря + название -->
+    <a href="#top" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 44 44" width="44" height="44" role="img">
+          <rect width="44" height="44" rx="13" fill="#332B27"/>
+          <rect x="13" y="5.5" width="3.6" height="6.5" rx="1.8" fill="#FFDB3F"/>
+          <rect x="27.4" y="5.5" width="3.6" height="6.5" rx="1.8" fill="#FFDB3F"/>
+          <rect x="8.5" y="9" width="27" height="6.2" rx="2.6" fill="#8D5EBA"/>
+          <rect x="8.5" y="15" width="27" height="20.5" rx="3.4" fill="#453B35"/>
+          <rect x="12" y="18.6" width="8.4" height="6.6" rx="2.1" fill="#FFDB3F"/>
+          <rect x="23.6" y="18.6" width="8.4" height="6.6" rx="2.1" fill="#2A231F"/>
+          <rect x="12" y="27.2" width="8.4" height="5.2" rx="2" fill="#2A231F"/>
+          <rect x="23.6" y="27.2" width="8.4" height="5.2" rx="2" fill="#DA6889"/>
+        </svg>
+      </span>
+      <span class="logo-txt">OG <b>Daily&nbsp;Planners</b></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    <nav class="menu" id="menu" aria-label="Разделы сайта">
+      <a href="#how" class="on">Как выглядит</a>
+      <a href="#demo">Цвета</a>
+      <a href="#inside">Что внутри</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#price">Цена</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a href="#price" class="head-cta">Забрать планер</a>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<main id="main">
+
+<!-- ═══ ГЕРОЙ · обещание, счётчик дней, коллаж ══════════════════ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="over">Планеры подготовки к <b>ОГЭ</b> и <b>ЕГЭ</b></p>
+      <span class="tag">📘 Google Таблицы · доступ навсегда · 9 и 11 класс</span>
+      <h1>Готовься так, чтобы <mark>видеть результат</mark></h1>
+      <p class="lead">
+        Свои темы, свой счёт — планер только считает. Вписываешь первичный балл,
+        и он сам переводит его в оценку за ОГЭ или тестовый за ЕГЭ, показывает
+        слабые темы и сколько осталось до цели. Считать в уме ничего не надо.
+      </p>
+
+      <!-- Счётчик заполняется скриптом из CONFIG.examDate -->
+      <div class="countdown">
+        <div>
+          <div class="cd-num" id="cdNum">—</div>
+          <div class="cd-lbl">дней до экзамена</div>
+        </div>
+        <div class="cd-right">
+          <div class="cd-lbl" id="cdTxt">считаем…</div>
+          <div class="cd-bar"><i id="cdBar"></i></div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#price" class="btn btn-1">Забрать планер →</a>
+        <a href="#how" class="btn btn-2">Сначала посмотреть</a>
+      </div>
+
+      <div class="trust">
+        <div><b data-count="6">0</b>листов под задачу</div>
+        <div><b data-count="2">0</b>экзамена: ОГЭ и ЕГЭ</div>
+        <div><b data-count="11">0</b>цветовых схем</div>
+        <div><b>∞</b>доступ навсегда</div>
+      </div>
+    </div>
+
+    <!-- Портрет вместо коллажа карточек: живой человек в первом экране
+         работает лучше, чем три выдуманных таблички. Цветное пятно
+         за спиной и подписи-стикеры собраны кодом, поэтому картинка
+         остаётся одна и весит 77 КБ. -->
+    <div class="hero-art">
+      <div class="hero-photo">
+        <picture>
+          <source srcset="img/student.webp" type="image/webp">
+          <img src="img/student.png" width="642" height="820" fetchpriority="high" decoding="async"
+               alt="Школьница со стопкой папок и стикером «дедлайн» держит скрещённые пальцы перед экзаменом">
+        </picture>
+      </div>
+
+      <!-- Подписи слева от фигуры: справа поднята рука со скрещёнными
+           пальцами, её перекрывать нельзя — это лучшая часть кадра. -->
+      <span class="hero-note n1" aria-hidden="true"><b>6 листов</b>вместо десяти тетрадей</span>
+      <span class="hero-note n2" aria-hidden="true"><b>ОГЭ и ЕГЭ</b>в одной таблице</span>
+      <span class="hero-note n3" aria-hidden="true"><b>5 минут</b>в день на заполнение</span>
+
+      <span class="sticker s-a"><img class="cat" src="cats/cat-shock.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+      <span class="sticker s-c"><img class="cat" src="cats/cat-yawn.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ БЕГУЩАЯ СТРОКА · разделяет экраны и держит темп ════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-row" id="tickerRow">
+    <span>🎯 Балл сразу переводится в оценку</span><span>✦</span>
+    <span>🔁 Слабые темы находит сам</span><span>✦</span>
+    <span>⏳ Знаешь, сколько дней осталось</span><span>✦</span>
+    <span>📈 Видишь, что реально растёшь</span><span>✦</span>
+    <span>📚 Темы экзамена уже вписаны</span><span>✦</span>
+    <span>🌙 Понимаешь, почему неделя не пошла</span><span>✦</span>
+    <span>👩‍🏫 Видно, что даёт репетитор</span><span>✦</span>
+    <span>💛 Пять минут вечером — и всё на месте</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ═══ КАРУСЕЛЬ · шесть листов планера ══════════════════════════ -->
+<section id="how" class="has-stick">
+  <span class="sticker s-how" aria-hidden="true"><img class="cat" src="cats/cat-peek.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <div class="wrap">
+    <div class="carousel-head reveal">
+      <div>
+        <span class="tag">👀 Загляни внутрь</span>
+        <h2 class="h2">Шесть листов. Ни одного лишнего</h2>
+        <p class="lead">Так выглядит работа с планером изо дня в день — и именно она
+          готовит к экзамену лучше, чем ещё один решебник. Утром открываешь неделю
+          и видишь, чем занят день. Вечером ставишь галочки — планер сам считает,
+          сколько сделано. После пробника отмечаешь решённые задания и получаешь
+          готовый список, что разобрать. В воскресенье закрываешь неделю, и она
+          уходит в архив со своим выводом.</p>
+        <p class="lead" style="margin-top:-6px">Пять минут в день вместо часа
+          на «а что я вообще успел». Ниже — что даёт каждый из шести листов.</p>
+      </div>
+      <div class="c-nav">
+        <button class="c-btn" id="prev" aria-label="Предыдущий лист">←</button>
+        <button class="c-btn" id="next" aria-label="Следующий лист">→</button>
+      </div>
+    </div>
+
+    <!-- Слайды листаются пальцем, стрелками, точками и клавишами.
+         Внутри — настоящие снимки листов, не рисунки. -->
+    <div class="track" id="track" tabindex="0" aria-label="Листы планера">
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">1 · Начало</span>
+          <span class="slide-tab">настроить один раз</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-nachalo.png">
+            <img src="screens/sheet-nachalo.png" loading="lazy" decoding="async"
+               width="1469" height="740" alt="Лист «Начало»: шесть шагов, настройки, мои экзамены и выбор режима времени">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Шесть шагов — и планер станет твоим.</b> Имя, экзамен
+          и две даты, ниже своими словами предметы — планер пересоберётся под них.
+          Никакой настройки формул. Здесь же выбираешь, как считать время: помидорками
+          по двадцать пять минут или копилкой, куда складываешь всё, что позанимался.
+          Оба способа разобраны прямо в таблице, вместе с ответами на «а если только
+          пять минут» и «а если отвлеклась».</p>
+      </article>
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">2 · Моя неделя</span>
+          <span class="slide-tab">твой день</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-nedelya.png">
+            <img src="screens/sheet-nedelya.png" loading="lazy" decoding="async"
+               width="1462" height="753" alt="Лист «Моя неделя»: дистанция до экзамена, три цели, задачи по дням и копилка минут">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Утром открыл — и знаешь, чем занят день.</b> Лента
+          дистанции показывает, какая ты неделя из скольких. Три главные цели не дают
+          распылиться: каждая закрытая — треть недели. Привычки отмечены звёздами,
+          сколько дней из семи, и среди них не только учёба, но и лечь до полуночи,
+          прогулка, вода. Вечером видно честно: сколько сделано, какой день вышел
+          лучшим и цела ли цепочка дней без нуля.</p>
+      </article>
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">3 · Предметы и темы</span>
+          <span class="slide-tab">что учить сегодня</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-predmety.png">
+            <img src="screens/sheet-predmety.png" loading="lazy" decoding="async"
+               width="1485" height="740" alt="Лист «Предметы и темы»: карта тем по предметам и статусы каждой темы">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Конец фразе «кажется, я плохо знаю математику».</b>
+          Квадрат — тема, цвет — статус: не начато, учу, только теория, знаю, повторить.
+          Темы по кодификатору уже вписаны, список твой — можно править как в учебнике.
+          Тяжёлым темам ставишь вес два или три, и готовность считается честно,
+          а не «сорок штук поровну». Смотришь на карту три секунды и видишь,
+          что учить сегодня.</p>
+      </article>
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">4 · Пробники и варианты</span>
+          <span class="slide-tab">почему балл такой</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-probniki.png">
+            <img src="screens/sheet-probniki.png" loading="lazy" decoding="async"
+               width="1469" height="743" alt="Лист «Пробники и варианты»: сборники, карта заданий по каждому варианту и подсказки, что разобрать">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Пробник перестаёт быть просто оценкой.</b> Отмечаешь
+          решённые задания — планер сам считает балл, переводит его в оценку или
+          тестовый балл и находит закономерность: на каких номерах ты спотыкаешься
+          из раза в раз. Внизу появляется готовый список «что разобрать». Больше не
+          нужно гадать, почему второй пробник хуже первого, — причина названа.</p>
+      </article>
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">5 · Школа</span>
+          <span class="slide-tab">школа не подождёт</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-shkola.png">
+            <img src="screens/sheet-shkola.png" loading="lazy" decoding="async"
+               width="1466" height="736" alt="Лист «Школа»: расписание недели, домашка со сроками, контрольные и оценки">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Школа не должна срываться из-за подготовки.</b>
+          Расписание, домашка со сроками и контрольные в одном месте — то, что горит,
+          поднимается наверх само. Оценки складываются в средний балл, и планер прямо
+          пишет, сколько пятёрок не хватает до нужной в четверти. Родителям, кстати,
+          именно этот лист нравится больше всего.</p>
+      </article>
+
+      <article class="slide">
+        <div class="slide-top">
+          <div class="dots-mac" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="slide-name">6 · Архив</span>
+          <span class="slide-tab">твой путь целиком</span>
+        </div>
+        <div class="slide-shot">
+          <a class="zoom" href="screens/sheet-arhiv.png">
+            <img src="screens/sheet-arhiv.png" loading="lazy" decoding="async"
+               width="1466" height="385" alt="Лист «Архив»: итоги по всем неделям, разбивка по месяцам и рост балла">
+          </a>
+        </div>
+        <p class="slide-cap"><b>Лист против выгорания.</b> Каждая прожитая неделя
+          сохраняется сюда со своим итогом и выводом. В феврале, когда кажется, что
+          всё зря и ничего не меняется, ты открываешь архив и видишь: осенью было
+          столько, сейчас столько. Это не мотивация из цитат — это твои собственные
+          цифры, которые невозможно оспорить.</p>
+      </article>
+
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- ═══ ПАЛИТРЫ · одиннадцать цветовых схем ════════════════════ -->
+<section id="demo" class="has-stick">
+  <span class="sticker s-pal" aria-hidden="true"><img class="cat" src="cats/cat-tongue.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:34px">
+      <span class="tag">🎨 Одиннадцать схем · меняются одним нажатием</span>
+      <h2 class="h2">Большая цветовая палитра на твой выбор</h2>
+      <p class="lead">Одиннадцать готовых схем — от нежной пастели до строгого
+        графита и ночного кобальта. Нажми на любой цвет прямо здесь и посмотри,
+        как планер будет выглядеть у тебя: заголовки, шапки дней, карта тем и цифры
+        перекрасятся все сразу. Выбрать можно заранее, до покупки, а поменять —
+        когда захочется, хоть каждую неделю: это один пункт меню внутри таблицы.</p>
+    </div>
+
+    <div class="pal reveal">
+      <!-- Кружки — настоящие цвета дней недели из каждой схемы -->
+      <div class="pal-list" role="tablist" aria-label="Цветовые схемы планера">
+        <button class="pal-btn on" type="button" role="tab" data-pal="pastel"
+                aria-selected="true" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#DA6889"></i><i style="background:#FFDB3F"></i><i style="background:#FFDB3F"></i><i style="background:#C9E29B"></i><i style="background:#A9DDDF"></i><i style="background:#B1CFFD"></i><i style="background:#8D5EBA"></i></span>
+          <span class="pal-name">Пастель</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="vishnya"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#C3132F"></i><i style="background:#E06A80"></i><i style="background:#E9A6B2"></i><i style="background:#F0BFC6"></i><i style="background:#C98C86"></i><i style="background:#A8434F"></i><i style="background:#DE8C97"></i></span>
+          <span class="pal-name">Вишня</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="lavanda"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#A78BD6"></i><i style="background:#C0A8E4"></i><i style="background:#D5BFEF"></i><i style="background:#B6C9E8"></i><i style="background:#9FB8DE"></i><i style="background:#8E76C4"></i></span>
+          <span class="pal-name">Лаванда</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="persik"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#FFBE98"></i><i style="background:#FFD5B5"></i><i style="background:#FBE0C0"></i><i style="background:#CFE2D6"></i><i style="background:#A8CDEA"></i><i style="background:#BFD9F0"></i><i style="background:#E8B49A"></i></span>
+          <span class="pal-name">Персик</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="matcha"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#8FA96B"></i><i style="background:#AFC48C"></i><i style="background:#CBDCAE"></i><i style="background:#DCD9A8"></i><i style="background:#B7C79F"></i><i style="background:#9FB284"></i></span>
+          <span class="pal-name">Матча</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="yagoda"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#D6236F"></i><i style="background:#E8698F"></i><i style="background:#F294B0"></i><i style="background:#C77BC4"></i><i style="background:#B98BD1"></i><i style="background:#DD6FA8"></i><i style="background:#A34C8E"></i></span>
+          <span class="pal-name">Ягода</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="more"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#0F8C8C"></i><i style="background:#3FAFA8"></i><i style="background:#8FD6D2"></i><i style="background:#B9E2D8"></i><i style="background:#E3D3B4"></i><i style="background:#F0A98F"></i><i style="background:#5FA9C4"></i></span>
+          <span class="pal-name">Море</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="raduga"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#F7A8C4"></i><i style="background:#FBC79B"></i><i style="background:#FBE59B"></i><i style="background:#C6E6A8"></i><i style="background:#A9DFD4"></i><i style="background:#B7C4F5"></i><i style="background:#CDB6EC"></i></span>
+          <span class="pal-name">Радуга</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="grafit"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#22262B"></i><i style="background:#3C434B"></i><i style="background:#5A626B"></i><i style="background:#767E88"></i><i style="background:#9AA1A9"></i><i style="background:#B8E62E"></i><i style="background:#8FB524"></i></span>
+          <span class="pal-name">Графит</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="kobalt"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#1B3A8C"></i><i style="background:#2E52A8"></i><i style="background:#3E6FD1"></i><i style="background:#6A93E0"></i><i style="background:#8FAEE9"></i><i style="background:#F08B2A"></i><i style="background:#4C8FA8"></i></span>
+          <span class="pal-name">Кобальт</span>
+        </button>
+        <button class="pal-btn" type="button" role="tab" data-pal="haki"
+                aria-selected="false" aria-controls="pal-view">
+          <span class="pal-dots" aria-hidden="true"><i style="background:#6E7548"></i><i style="background:#8B9160"></i><i style="background:#B4B183"></i><i style="background:#CFC49A"></i><i style="background:#C88A62"></i><i style="background:#B4573A"></i><i style="background:#8E7A55"></i></span>
+          <span class="pal-name">Хаки</span>
+        </button>
+      </div>
+
+      <div class="pal-view" id="pal-view">
+        <figure class="pal-shot on" data-pal="pastel">
+          <img src="screens/pal-pastel.png" width="1000" height="300" decoding="async" alt="Планер в палитре «Пастель»">
+          <figcaption>нежная розово-лавандовая — как было</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="vishnya" hidden>
+          <img src="screens/pal-vishnya.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Вишня»">
+          <figcaption>вишня со сливками — контраст и воздух</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="lavanda" hidden>
+          <img src="screens/pal-lavanda.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Лаванда»">
+          <figcaption>лавандовый раф — сирень и пудра</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="persik" hidden>
+          <img src="screens/pal-persik.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Персик»">
+          <figcaption>персик и небо — тёплое с холодным</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="matcha" hidden>
+          <img src="screens/pal-matcha.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Матча»">
+          <figcaption>матча-латте — фисташка и крем</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="yagoda" hidden>
+          <img src="screens/pal-yagoda.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Ягода»">
+          <figcaption>ягодный смузи — фуксия и лиловый</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="more" hidden>
+          <img src="screens/pal-more.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Море»">
+          <figcaption>море — бирюза, кобальт, песок</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="raduga" hidden>
+          <img src="screens/pal-raduga.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Радуга»">
+          <figcaption>радужная пастель — свой цвет на каждый день</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="grafit" hidden>
+          <img src="screens/pal-grafit.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Графит»">
+          <figcaption>графит и лайм — строго, один акцент</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="kobalt" hidden>
+          <img src="screens/pal-kobalt.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Кобальт»">
+          <figcaption>ночной кобальт — синий и янтарь</figcaption>
+        </figure>
+        <figure class="pal-shot" data-pal="haki" hidden>
+          <img src="screens/pal-haki.png" loading="lazy" width="1000" height="300" decoding="async" alt="Планер в палитре «Хаки»">
+          <figcaption>хаки и терракота — земляная, спокойная</figcaption>
+        </figure>
+      </div>
+
+      <p class="pal-note">На всех снимках один и тот же кусок листа «Моя неделя»:
+        лента дистанции, три главные цели, лента цифр, шапка дней и карта тем.
+        Меняется только цвет — чтобы было видно, что именно ты выбираешь.</p>
+    </div>
+
+    <!-- Что входит в палитру -->
+    <div class="pal-facts reveal">
+      <div><b data-count="11">0</b><span>готовых схем на выбор</span></div>
+      <div><b data-count="8">0</b><span>цветов дня внутри каждой</span></div>
+      <div><b data-count="6">0</b><span>листов перекрашиваются разом</span></div>
+      <div><b data-count="1">0</b><span>пункт меню — и всё готово</span></div>
+    </div>
+
+    <p class="center" style="margin-top:22px">
+      <a href="#price" class="btn btn-3">Забрать планер со всеми палитрами →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══ ЧТО ВНУТРИ · плиточная сетка возможностей ═══════════════ -->
+<section id="inside" class="section-pattern">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:44px">
+      <span class="tag">⚙️ Работает за тебя</span>
+      <h2 class="h2">Что меняется, когда подготовка перестаёт быть в голове</h2>
+      <p class="lead">Планер не заставляет заниматься больше. Он убирает восемь
+        вещей, на которые уходят силы: считать, вспоминать, гадать, сравнивать,
+        оправдываться и заново решать, с чего начать.</p>
+    </div>
+
+    <div class="masonry reveal">
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--pink-2)">🎯</div>
+        <h3>Ты сразу знаешь свою оценку</h3>
+        <p>Не «сорок семь баллов, а это много или мало?». Вписал первичный балл —
+          планер перевёл его в оценку за ОГЭ или тестовый за ЕГЭ и показал,
+          сколько не хватает до цели. Пороги лежат в справочнике: регион двигает
+          границы — правишь одну цифру, и пересчитается всё.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--sun-2)">🔍</div>
+        <h3>Слабые темы находятся сами</h3>
+        <p>Ошибки из пробников привязаны к темам. Ты ничего не сводишь и не
+          подсчитываешь — просто через две недели видишь, что четыре темы набрали
+          красный цвет. Это и есть ответ на вопрос «что учить в первую очередь»,
+          который иначе приходится угадывать.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--mint-2)">🏷</div>
+        <h3>Понятно, лень это или незнание</h3>
+        <p>У каждой ошибки есть тип: невнимательность, не знаю тему, не хватило
+          времени, неверно понял условие. Через месяц картина честная. Если
+          половина ошибок — невнимательность, учить больше бесполезно: надо
+          менять то, как ты пишешь работу.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--coral-2)">⏳</div>
+        <h3>Время перестаёт быть абстрактным</h3>
+        <p>«Экзамен где-то в мае» не заставляет сесть за стол. «До математики
+          14 дней», написанное красным, — заставляет. Планер держит отсчёт
+          по каждому предмету отдельно и показывает его каждое утро,
+          пока ты не привыкнешь считать неделями, а не месяцами.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--sky-2)">📈</div>
+        <h3>Видно, что усилия работают</h3>
+        <p>Самое тяжёлое в подготовке — ощущение, что ничего не меняется.
+          Планер хранит все пробники и рисует линию: вот с чего начал, вот где
+          сейчас. Даже когда рост маленький, он есть на графике —
+          и это единственный аргумент, который работает в феврале.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--lav-2)">🧩</div>
+        <h3>Большая цель разбита на неделю</h3>
+        <p>«Сдать экзамен» — не цель, а тревога: за неё невозможно взяться
+          сегодня. Планер просит три конкретные цели на неделю, и каждая закрытая
+          даёт треть. К вечеру воскресенья ты видишь не размытое «вроде что-то
+          делал», а цифру: неделя закрыта на столько-то процентов.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--grass-2)">💸</div>
+        <h3>Ясно, за что вы платите репетитору</h3>
+        <p>Занятия, расход за месяц и честная оценка пользы от 1 до 5.
+          Через полтора месяца строка говорит сама за себя: по одному предмету
+          балл растёт, по другому стоит на месте при том же ценнике.
+          Разговор с родителями становится разговором о фактах.</p>
+      </div>
+
+      <div class="mcard">
+        <div class="ic" style="background:var(--peach-2)">🌙</div>
+        <h3>Понятно, почему неделя не пошла</h3>
+        <p>Сон, подходы, самочувствие и привычки лежат рядом с результатом.
+          Проваленная неделя почти никогда не про лень: обычно там три ночи
+          по пять часов. Когда это видно строкой, перестаёшь ругать себя
+          и начинаешь чинить причину.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ БЕЗ ПЛАНЕРА / С ПЛАНЕРОМ ═══════════════════════════════ -->
+<section id="vs" class="has-stick">
+  <span class="sticker s-vs" aria-hidden="true"><img class="cat" src="cats/cat-shock.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:40px">
+      <span class="tag">🔍 Две одинаковые недели</span>
+      <h2 class="h2">Две одинаковые недели. Разный результат</h2>
+      <p class="lead">Один и тот же человек, одно и то же количество часов.
+        Меняется только одно — видит он свою подготовку или держит её в голове.</p>
+    </div>
+    <div class="vs reveal">
+      <div class="vs-col vs-a">
+        <h3>😮‍💨 Без планера</h3>
+        <ul>
+          <li><i>·</i>Садишься за то, что понятнее и приятнее. Трудное откладывается
+            до момента, когда времени на него уже нет</li>
+          <li><i>·</i>Пробники лежат в разных тетрадях. Сравнить два соседних —
+            уже работа, поэтому этого никто не делает</li>
+          <li><i>·</i>Ошибку разобрал, через две недели повторил её же. Никто
+            не напомнил, потому что нигде не записано</li>
+          <li><i>·</i>Плохая неделя объясняется словом «ленивая».
+            Настоящую причину не ищут, значит, она повторится</li>
+          <li><i>·</i>На вопрос «как идёт подготовка» отвечаешь «нормально»,
+            потому что честного ответа просто нет</li>
+          <li><i>·</i>Родители спрашивают каждый день. Ответить нечем,
+            и разговор превращается в спор</li>
+          <li><i>·</i>В феврале накрывает ощущение, что месяцы прошли зря.
+            Возразить самому себе нечем</li>
+        </ul>
+      </div>
+      <div class="vs-col vs-b">
+        <h3>🎯 С планером</h3>
+        <ul>
+          <li><i>✓</i>Слабые темы подсвечены цветом. Что учить сегодня —
+            вопрос трёх секунд, а не получаса сомнений</li>
+          <li><i>✓</i>Все пробники в одной таблице, рядом линия роста.
+            Видно и движение вперёд, и провалы</li>
+          <li><i>✓</i>У неразобранной ошибки нет галочки, и тема остаётся
+            красной. Забыть про неё технически не получится</li>
+          <li><i>✓</i>Плохая неделя объясняется строкой: три ночи по пять часов.
+            Чинишь причину, а не ругаешь себя</li>
+          <li><i>✓</i>На «как подготовка?» отвечаешь конкретно и спокойно —
+            цифры перед глазами</li>
+          <li><i>✓</i>Родители открывают таблицу и видят сами.
+            Ежедневные допросы заканчиваются</li>
+          <li><i>✓</i>В феврале открываешь архив и видишь весь пройденный путь.
+            Это работает лучше любых уговоров</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ КОМУ ПОДОЙДЁТ И КОМУ НЕТ ═══════════════════════════════ -->
+<section id="fit">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:40px">
+      <span class="tag">🤝 Без розовых очков</span>
+      <h2 class="h2">Подходит не всем. И мы говорим об этом до оплаты</h2>
+      <p class="lead">Отговорить до покупки дешевле, чем возвращать деньги после.
+        Правую колонку стоит прочитать внимательнее левой.</p>
+    </div>
+    <div class="fit reveal">
+      <div class="fit-col fit-yes">
+        <h3><span>✅</span>Точно твоё, если</h3>
+        <ul>
+          <li>Сдаёшь ОГЭ или ЕГЭ в этом или следующем году и хочешь систему, а не тетрадку</li>
+          <li>Решаешь пробники, но не понимаешь, растёшь ли ты вообще</li>
+          <li>Ошибки разбираешь, но они повторяются</li>
+          <li>Устал(а) от вопроса «как успехи» — хочешь показать вместо объяснений</li>
+          <li>Готовишься с репетитором и хочешь понимать отдачу от денег</li>
+          <li>Тебе важно видеть движение: галочки, проценты, закрытые темы</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <h3><span>🚫</span>Лучше не бери, если</h3>
+        <ul>
+          <li>Ищешь готовые ответы и решебник — здесь их нет</li>
+          <li>Не готов тратить пять минут в день на заполнение</li>
+          <li>До экзамена меньше недели: планер про системность, а не про спасение</li>
+          <li>Нужна программа, которая учит вместо тебя</li>
+          <li>Нет доступа к Google Таблицам и не хочешь его заводить</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ГАЛЕРЕЯ · рамки под живые скриншоты ════════════════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:40px">
+      <span class="tag">🖼 Не рендеры, а рабочие экраны</span>
+      <h2 class="h2">Пять минут в день — и вот что ты видишь</h2>
+      <p class="lead">Заполняешь только галочки и баллы. Проценты, слабые темы,
+        рост и «сколько осталось» планер считает сам — вот его настоящие экраны.</p>
+      <p class="lead" style="font-size:14px;margin-top:-4px">
+        Снимки живой таблицы: те же листы и колонки откроются после оплаты.</p>
+    </div>
+    <!-- Настоящие снимки листов. Открываются в полный размер по клику. -->
+    <div class="shots reveal">
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-nedelya.png">
+          <img src="screens/sheet-nedelya.png" loading="lazy" decoding="async"
+               width="1462" height="753" alt="Лист «Моя неделя» в работе">
+        </a>
+        <figcaption>Твоя неделя: три цели, задачи по дням и привычки на одном экране</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-predmety.png">
+          <img src="screens/sheet-predmety.png" loading="lazy" decoding="async"
+               width="1485" height="740" alt="Лист «Предметы и темы» в работе">
+        </a>
+        <figcaption>Все темы экзамена: что знаешь, что учишь, что надо повторить</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-probniki.png">
+          <img src="screens/sheet-probniki.png" loading="lazy" decoding="async"
+               width="1469" height="743" alt="Лист «Пробники и варианты» в работе">
+        </a>
+        <figcaption>Разбор пробников: на каких заданиях ты спотыкаешься чаще всего</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-shkola.png">
+          <img src="screens/sheet-shkola.png" loading="lazy" decoding="async"
+               width="1466" height="736" alt="Лист «Школа» в работе">
+        </a>
+        <figcaption>Школа: расписание, домашка и контрольные, чтобы ничего не пропустить</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-nachalo.png">
+          <img src="screens/sheet-nachalo.png" loading="lazy" decoding="async"
+               width="1469" height="740" alt="Лист «Начало» с заполненными настройками">
+        </a>
+        <figcaption>Первый вход: шесть шагов, после которых планер собран под тебя</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="screens/sheet-arhiv.png">
+          <img src="screens/sheet-arhiv.png" loading="lazy" decoding="async"
+               width="1466" height="385" alt="Лист «Архив» с итогами четырёх недель">
+        </a>
+        <figcaption>Архив недель: доказательство, что ты движешься вперёд</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ОТЗЫВЫ ═════════════════════════════════════════════════
+     ВАЖНО: карточки ниже — заготовки, а не настоящие отзывы.
+     Замени текст, имя и подпись на реальные, иначе это обман
+     покупателя. Если отзывов пока нет — удали всю секцию
+     и пункт «Отзывы» из меню, пустой блок хуже, чем никакого.  -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:40px">
+      <span class="tag">💬 Отзывы</span>
+      <h2 class="h2">Что говорят те, кто уже ведёт</h2>
+      <p class="lead">Девятиклассники, одиннадцатиклассники и их родители —
+        как есть, вместе с четырьмя звёздами и «первую неделю я забивала».</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ВНИМАНИЕ, ЭТО ПРИМЕРЫ, А НЕ НАСТОЯЩИЕ ОТЗЫВЫ.
+         Тексты написаны как образец тона и длины — по ним видно,
+         какой отзыв работает: конкретный, с цифрой, с деталью.
+         Перед публикацией сайта замени их на реальные, иначе это
+         обман покупателя. Если настоящих пока нет — удали секцию
+         целиком и пункт «Отзывы» из меню: пустое место честнее.
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="reviews reveal">
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-peek.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Настя, 9 класс</b><s>русский, математика, общество</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Я реально не понимала, расту я или нет. Решала пробники, радовалась,
+          что «вроде норм» — а потом бац, и опять 3. Тут вписываешь балл, и он
+          сразу показывает оценку и сколько до цели. <b>За полтора месяца с 19
+          до 27 по русскому.</b> Самое смешное — я ничего нового не делала,
+          просто увидела, что заваливаю одни и те же три задания.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-yawn.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Ирина, мама</b><s>сын готовится к ЕГЭ</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Купила, если честно, без веры — у нас дома уже кладбище блокнотов.
+          Но тут другое: <b>я перестала спрашивать «ты позанимался?»</b> Просто
+          открываю таблицу и вижу — 12 часов за неделю, два пробника, четыре темы
+          закрыто. Скандалов стало меньше в разы. За 899 рублей это, простите,
+          дешевле одного занятия с репетитором.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-shock.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Артём, 11 класс</b><s>профиль, физика, информатика</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Скачал, открыл, сижу минуту с лицом этого кота 😐 Оно реально само
+          считает. Ставишь единичку за решённое задание — клетка красится,
+          балл суммируется, снизу пишет: «чаще всего спотыкаешься на задании 13».
+          <b>Я такое в блокноте полгода не мог понять</b>, а тут за один вечер.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-sleep.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Лиза, 9 класс</b><s>ОГЭ, четыре предмета</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐</div>
+        </div>
+        <p>Скажу честно: первую неделю я забивала. Открывала раз в три дня,
+          галочки не ставила, было лень. Потом втянулась — там же копилка минут,
+          и обидно рвать цепочку дней. <b>Сейчас 23 дня без нуля.</b> Четыре
+          звезды, потому что первые дни всё-таки надо себя заставлять,
+          волшебства тут нет.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-laugh.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Дмитрий, папа</b><s>дочь сдаёт ОГЭ</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Я айтишник, к табличкам придирчивый. Полез смотреть, что внутри —
+          там нормальные формулы, а не «нарисовано красиво». <b>Ничего не сломалось,
+          когда дочь вписала свои предметы</b>, темы подтянулись сами.
+          Плюс палитра: она выбрала лавандовую и теперь показывает подружкам.
+          Мелочь, а сидит в ней каждый день.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-tongue.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Соня, 11 класс</b><s>ЕГЭ: база, история, общество</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Самое полезное для меня — журнал ошибок. Раньше я разбирала пробник
+          и через неделю забывала, что там было. Теперь <b>видно, что 8 ошибок
+          из 12 — по невнимательности, а не «я не знаю тему»</b>. Это вообще
+          другой вывод: мне не учить надо было, а перестать спешить.</p>
+      </article>
+
+      <article class="rev">
+        <div class="rev-top">
+          <div class="rev-ava"><img class="cat" src="cats/cat-peek.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></div>
+          <div class="rev-who"><b>Марина, мама</b><s>дочь сдала ОГЭ в прошлом году</s></div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p>Пишу уже после экзаменов. <b>Дочь сдала русский на 5, математику на 4</b> —
+          при том, что в декабре мы всерьёз обсуждали репетитора по обоим.
+          Не буду говорить, что это всё таблица. Но именно в ней стало видно,
+          что математика проседает, и мы взялись за неё вовремя, а не в мае.
+          Сейчас берём версию для ЕГЭ, потому что впереди 11 класс.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══ ОПЛАТА · один продукт, одна кнопка ═════════════════════ -->
+<section id="price" class="has-stick">
+  <span class="sticker s-price" aria-hidden="true"><img class="cat" src="cats/cat-yawn.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <div class="wrap">
+
+    <!-- Девушка слева указывает пальцем на блок с ценой.
+         На телефоне её прячем: там блок и так во весь экран,
+         а фигура сбоку только съест место. -->
+    <div class="offer-wrap">
+      <div class="offer-girl" aria-hidden="true">
+        <picture>
+          <source srcset="img/student-point.webp" type="image/webp">
+          <img src="img/student-point.png" width="618" height="760"
+               loading="lazy" decoding="async" alt="">
+        </picture>
+      </div>
+
+    <div class="offer reveal">
+      <!-- Левая половина: что получает человек -->
+      <div class="offer-left">
+        <span class="offer-tag">🎓 ОГЭ и ЕГЭ в одной таблице</span>
+        <h2 class="offer-h">Один раз заплатил.<br>До выпускного — твой</h2>
+        <p class="offer-sub">Девятый класс, одиннадцатый, оба сразу — покупать
+          второй раз не придётся. Планер пересобирается под твои экзамены сам.</p>
+
+        <ul class="offer-list">
+          <li><i>✓</i><b>Шесть листов:</b> начало, неделя, темы, пробники, школа, архив</li>
+          <li><i>✓</i><b>Темы уже внутри</b> — по кодификатору, вписывать вручную не нужно</li>
+          <li><i>✓</i><b>Обе шкалы перевода:</b> оценка за ОГЭ, тестовый балл за ЕГЭ</li>
+          <li><i>✓</i><b>11 цветовых схем</b> — от пастели до графита</li>
+          <li><i>✓</i><b>Подгон под твой экран:</b> телефон, ноутбук, монитор</li>
+          <li><i>✓</i><b>Инструкция первым листом</b> — что делать в первый день</li>
+          <li><i>✓</i><b>Обновления бесплатно,</b> включая шкалы каждый год</li>
+        </ul>
+      </div>
+
+      <!-- Правая половина: цена и кнопка -->
+      <div class="offer-right">
+        <div class="offer-badge">Дешевле одного занятия с репетитором</div>
+        <div class="offer-price">
+          <span class="offer-sum">899&nbsp;₽</span>
+          <s>1&nbsp;198&nbsp;₽</s>
+        </div>
+        <div class="offer-note">разово · без подписок и списаний</div>
+
+        <a href="checkout.html" class="btn btn-1 offer-btn">Забрать планер →</a>
+
+        <ul class="offer-trust">
+          <li>⚡ Ссылка приходит сразу после оплаты</li>
+          <li>🔒 Оплата картой, СБП, ЮMoney, Робокассой</li>
+          <li>↩️ Не подошло — вернём деньги</li>
+        </ul>
+
+        <p class="offer-small">Копия таблицы уезжает на твой Google Диск
+          и остаётся там навсегда — даже если сайт закроется.</p>
+      </div>
+    </div>
+
+    </div>
+
+    <p class="center offer-after">
+      Сомневаешься? <a href="#how">Посмотри, как выглядят все шесть листов</a> —
+      это ни к чему не обязывает.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══ ПОЛОСА КОТОВ · разделитель между блоками ═══════════════ -->
+<div class="cat-strip" aria-hidden="true">
+  <span><img class="cat" src="cats/cat-peek.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <span><img class="cat" src="cats/cat-laugh.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <span><img class="cat" src="cats/cat-yawn.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <span><img class="cat" src="cats/cat-tongue.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <span><img class="cat" src="cats/cat-sleep.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+  <span><img class="cat" src="cats/cat-shock.jpg" alt="" loading="lazy" decoding="async" width="420" height="420"></span>
+</div>
+
+
+
+<!-- ═══ FAQ · снимает возражения перед покупкой ════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:40px">
+      <span class="tag">💬 Вопросы</span>
+      <h2 class="h2">Пять вопросов, которые нам задают чаще всего</h2>
+      <p class="lead">Отвечаю прямо. Если чего-то не нашёл — просто напиши.</p>
+    </div>
+    <div class="faq reveal" id="faqBox">
+      <div class="q"><button type="button">Нужно ли уметь работать с таблицами?<span class="plus">+</span></button>
+        <div class="a"><p>Нет. Все формулы уже внутри: ты только выбираешь из выпадающих
+          списков и вписываешь числа. Из «умений» нужно уметь ставить галочки.
+          Первым листом в планере идёт инструкция — что делать в первый день,
+          в первую неделю и дальше.</p></div></div>
+
+      <div class="q"><button type="button">Работает ли с телефона?<span class="plus">+</span></button>
+        <div class="a"><p>Да, через приложение Google Таблицы. Отмечать галочки, вписывать баллы
+          и смотреть сводку удобно. Первую настройку — выбрать предметы и подставить темы —
+          лучше сделать с компьютера: там видно всю ширину листа.</p></div></div>
+
+      <div class="q"><button type="button">Сколько времени занимает заполнение?<span class="plus">+</span></button>
+        <div class="a"><p>Пять минут в день: отметить статус темы, поставить галочки в режиме,
+          записать пару строк в дневник. Плюс десять минут после каждого пробника —
+          разобрать ошибки. Это единственная обязательная часть: без неё планер
+          превращается в красивую таблицу без пользы.</p></div></div>
+
+      <div class="q"><button type="button">Это точно поможет сдать лучше?<span class="plus">+</span></button>
+        <div class="a"><p>Планер не добавляет знаний — он показывает, где их нет. Гарантировать
+          баллы было бы враньём. Что он реально даёт: ты перестаёшь готовиться вслепую
+          и тратить время на темы, которые и так знаешь.</p></div></div>
+
+      <div class="q"><button type="button">Как получу планер после оплаты?<span class="plus">+</span></button>
+        <div class="a"><p>Ссылка на копию таблицы придёт сразу после оплаты. Открываешь,
+          нажимаешь «Создать копию» — она становится твоей, никто кроме тебя её не видит.
+          Доступ навсегда, обновления бесплатно.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ КОНТАКТЫ · ссылки и форма заявки ═══════════════════════ -->
+<section id="contact">
+  <div class="wrap">
+
+    <!-- Девушка справа от блока: смотрит вверх-влево, то есть
+         в сторону вопроса «Остались вопросы?». Взгляд уводит
+         к тексту, а не от него. -->
+    <div class="contact-wrap">
+    <div class="contact reveal">
+      <div>
+        <span class="tag" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#fff">✉️ Связаться</span>
+        <h2>Остались вопросы?<br>Ответим до оплаты</h2>
+        <p>Отвечаем обычно в течение дня. Можем показать таблицу вживую
+          и подсказать, подойдёт ли она под твои предметы и твой экзамен.</p>
+        <div class="links">
+          <a class="link-row" href="https://t.me/ogdailyplanners" target="_blank" rel="noopener" data-contact="telegram"><em>💬</em>
+            <span><s>Телеграм · отвечаем быстрее всего</s><b>@ogdailyplanners</b></span></a>
+
+          <a class="link-row" href="mailto:girlsmoom@yandex.ru" data-contact="mail"><em>✉️</em>
+            <span><s>Почта · для длинных вопросов</s><b>girlsmoom@yandex.ru</b></span></a>
+
+          <a class="link-row" href="https://vk.ru/club241249160" target="_blank" rel="noopener" data-contact="vk"><em>🔵</em>
+            <span><s>ВКонтакте · группа проекта</s><b>vk.ru/ogdailyplanners</b></span></a>
+
+          <a class="link-row" href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=etjjkhp" target="_blank" rel="noopener" data-contact="instagram"><em>📸</em>
+            <span><s>Инстаграм · примеры и обновления</s><b>OG Daily Planners</b></span></a>
+        </div>
+      </div>
+
+      <form class="form" id="form" novalidate>
+        <label for="fname">Как тебя зовут</label>
+        <input id="fname" name="name" type="text" autocomplete="name" placeholder="Имя">
+        <label for="fcont">Телеграм или почта</label>
+        <input id="fcont" name="contact" type="text" inputmode="email" autocomplete="email" placeholder="@username или mail@mail.ru">
+        <label for="fplan">Что интересует</label>
+        <select id="fplan" name="plan">
+          <option>Хочу купить планер</option>
+          <option>Вопрос до покупки</option>
+          <option>Сдаю ОГЭ — подойдёт ли мне</option>
+          <option>Сдаю ЕГЭ — подойдёт ли мне</option>
+          <option>Я родитель, хочу разобраться</option>
+        </select>
+        <label for="fmsg">Вопрос или комментарий</label>
+        <textarea id="fmsg" name="msg" placeholder="Например: сдаю ЕГЭ по физике — есть ли разделы под неё?"></textarea>
+        <label class="agree">
+          <input type="checkbox" id="fagree" name="agree" checked>
+          <span>Согласен на обработку персональных данных и принимаю
+            <a href="policy.html" target="_blank" rel="noopener">политику</a>
+            и <a href="oferta.html" target="_blank" rel="noopener">оферту</a></span>
+        </label>
+        <button type="submit" class="btn btn-3">Отправить →</button>
+        <p class="form-note">Ответим в течение дня. Никакого спама и рассылок.</p>
+      </form>
+    </div>
+
+      <div class="contact-girl" aria-hidden="true">
+        <picture>
+          <source srcset="img/student-think.webp" type="image/webp">
+          <img src="img/student-think.png" width="548" height="720"
+               loading="lazy" decoding="async" alt="">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ ПОДВАЛ ═════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="year"></span> OG Daily Planners · планеры ОГЭ и ЕГЭ в Google Таблицах</div>
+    <div class="foot-links">
+      <a href="#how">Как выглядит</a>
+      <a href="#price">Тарифы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contact">Контакты</a>
+      <a href="oferta.html">Оферта</a>
+      <a href="policy.html">Политика данных</a>
+      <a href="https://t.me/ogdailyplanners" target="_blank" rel="noopener">Телеграм</a>
+      <a href="https://vk.ru/club241249160" target="_blank" rel="noopener">ВКонтакте</a>
+      <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=etjjkhp" target="_blank" rel="noopener">Инстаграм</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Липкая полоса с ценой — показывается только на телефоне -->
+<div class="sticky-buy">
+  <b>899 ₽</b><small>ОГЭ и ЕГЭ · навсегда</small>
+  <a href="checkout.html" class="btn btn-3">Забрать</a>
+</div>
+
+<!-- Всплывающее сообщение вместо alert -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+
+<!-- ═══ ОКНО ПРОСМОТРА СКРИНШОТОВ ══════════════════════════════
+     Открывается поверх сайта, а не в новой вкладке: человек
+     не теряет место, где читал. Закрывается по Esc, по крестику
+     и по клику мимо картинки.                                   -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Просмотр листа">
+  <button class="lb-x" id="lbClose" type="button" aria-label="Закрыть">✕</button>
+  <button class="lb-arw lb-prev" id="lbPrev" type="button" aria-label="Предыдущий лист">←</button>
+  <button class="lb-arw lb-next" id="lbNext" type="button" aria-label="Следующий лист">→</button>
+  <figure class="lb-box">
+    <div class="lb-scroll"><img id="lbImg" src="" alt=""></div>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+
+</body>
+</html>

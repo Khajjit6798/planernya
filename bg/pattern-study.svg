@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+<!-- ═══════════════════════════════════════════════════════════════
+     БЕСШОВНЫЙ ФОН · канцелярия сверху, плоский вектор
+     ───────────────────────────────────────────────────────────────
+     Собран под промпт: тетради с формулами, карандаши, маркеры,
+     стикеры, скрепки, кофе, будильник, бланк с галочками, комки
+     бумаги, линейка, транспортир. Палитра — та же, что у планера.
+
+     Бесшовность сделана честно: все предметы лежат в одной группе,
+     а она вставляется девять раз со сдвигом на ±640 по обеим осям
+     и обрезается по плитке. Поэтому предмет, вылезший за край,
+     появляется с противоположной стороны, и стыков не видно.
+     ═══════════════════════════════════════════════════════════════ -->
+<defs>
+  <clipPath id="tile"><rect width="640" height="640"/></clipPath>
+
+  <!-- лёгкое зерно, чтобы заливки не выглядели пластиковыми -->
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.055"/></feComponentTransfer>
+  </filter>
+
+  <g id="items" stroke="#23201D" stroke-width="5"
+     stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+    <!-- ── 1 · тетрадь с формулами ─────────────────────────────── -->
+    <g transform="translate(40,40) rotate(-7)">
+      <rect x="0" y="0" width="120" height="88" rx="6" fill="#FBFAF8"/>
+      <line x1="60" y1="0" x2="60" y2="88"/>
+      <path d="M12 22h34M12 36h30M12 50h34M12 64h22" stroke-width="4" stroke="#8A8078"/>
+      <path d="M72 22h34M72 36h26M72 50h34M72 64h18" stroke-width="4" stroke="#8A8078"/>
+      <path d="M14 74h20" stroke="#F4A9C4" stroke-width="6"/>
+    </g>
+
+    <!-- ── 2 · карандаш ────────────────────────────────────────── -->
+    <g transform="translate(230,54) rotate(28)">
+      <path d="M0 0h74v22H0z" fill="#FDDD96"/>
+      <path d="M74 0l26 11-26 11z" fill="#F9C79B"/>
+      <path d="M92 6l8 5-8 5z" fill="#23201D"/>
+      <rect x="-16" y="0" width="16" height="22" rx="3" fill="#F2B8B5"/>
+      <line x1="26" y1="0" x2="26" y2="22" stroke-width="4"/>
+    </g>
+
+    <!-- ── 3 · стикер с загнутым углом ─────────────────────────── -->
+    <g transform="translate(410,36) rotate(6)">
+      <path d="M0 0h92v72l-20 20H0z" fill="#C9E29B"/>
+      <path d="M92 72l-20 20V72z" fill="#A9C97A"/>
+      <path d="M14 22h58M14 38h44M14 54h34" stroke-width="4" stroke="#4F6B36"/>
+    </g>
+
+    <!-- ── 4 · кружка кофе ─────────────────────────────────────── -->
+    <g transform="translate(540,44)">
+      <path d="M0 14h64v46a16 16 0 0 1-16 16H16A16 16 0 0 1 0 60z" fill="#C9BEEC"/>
+      <path d="M64 26h14a14 14 0 0 1 0 28H64" fill="none"/>
+      <ellipse cx="32" cy="14" rx="32" ry="10" fill="#FBFAF8"/>
+      <path d="M20 -8c0-8 8-8 8-16M38 -8c0-8 8-8 8-16" stroke-width="4" stroke="#8A8078"/>
+    </g>
+
+    <!-- ── 5 · линейка ─────────────────────────────────────────── -->
+    <g transform="translate(60,180) rotate(-4)">
+      <rect x="0" y="0" width="150" height="34" rx="4" fill="#B1CFFD"/>
+      <path d="M18 0v12M36 0v18M54 0v12M72 0v18M90 0v12M108 0v18M126 0v12" stroke-width="4"/>
+    </g>
+
+    <!-- ── 6 · маркер-выделитель ───────────────────────────────── -->
+    <g transform="translate(262,168) rotate(-22)">
+      <rect x="0" y="0" width="30" height="76" rx="6" fill="#F9C79B"/>
+      <rect x="0" y="0" width="30" height="22" rx="6" fill="#E58A3E"/>
+      <path d="M4 76h22l-6 20h-10z" fill="#FDDD96"/>
+    </g>
+
+    <!-- ── 7 · бланк с галочками ───────────────────────────────── -->
+    <g transform="translate(378,158) rotate(-5)">
+      <rect x="0" y="0" width="104" height="128" rx="6" fill="#FBFAF8"/>
+      <g stroke-width="4">
+        <rect x="14" y="20" width="18" height="18" rx="4" fill="#C9E29B"/>
+        <path d="M18 29l4 5 8-10" stroke="#3F5B2A" stroke-width="4"/>
+        <rect x="14" y="52" width="18" height="18" rx="4" fill="#C9E29B"/>
+        <path d="M18 61l4 5 8-10" stroke="#3F5B2A" stroke-width="4"/>
+        <rect x="14" y="84" width="18" height="18" rx="4" fill="#F2B8B5"/>
+        <path d="M18 88l10 10M28 88l-10 10" stroke="#A8506A" stroke-width="4"/>
+      </g>
+      <path d="M44 29h44M44 61h38M44 93h44" stroke-width="4" stroke="#8A8078"/>
+    </g>
+
+    <!-- ── 8 · будильник ───────────────────────────────────────── -->
+    <g transform="translate(534,176)">
+      <circle cx="42" cy="46" r="40" fill="#A9DDDF"/>
+      <circle cx="42" cy="46" r="28" fill="#FBFAF8"/>
+      <path d="M42 46V28M42 46l14 10" stroke-width="5"/>
+      <path d="M12 10l14 12M72 10L58 22" stroke-width="6"/>
+      <path d="M22 84l-8 12M62 84l8 12" stroke-width="6"/>
+    </g>
+
+    <!-- ── 9 · скрепка ─────────────────────────────────────────── -->
+    <g transform="translate(48,296) rotate(18)">
+      <path d="M8 60V20a16 16 0 0 1 32 0v48a26 26 0 0 1-52 0V26" stroke-width="7"/>
+    </g>
+
+    <!-- ── 10 · транспортир ────────────────────────────────────── -->
+    <g transform="translate(120,300)">
+      <path d="M0 60a60 60 0 0 1 120 0z" fill="#F4A9C4"/>
+      <path d="M20 60a40 40 0 0 1 80 0" fill="#FBFAF8"/>
+      <path d="M60 60V22M30 60l8-14M90 60l-8-14" stroke-width="4"/>
+    </g>
+
+    <!-- ── 11 · вторая тетрадь, раскрытая ──────────────────────── -->
+    <g transform="translate(300,318) rotate(9)">
+      <path d="M0 12c26-12 52-12 72 0v78c-20-12-46-12-72 0z" fill="#FBFAF8"/>
+      <path d="M72 12c20-12 46-12 72 0v78c-26-12-52-12-72 0z" fill="#FBFAF8"/>
+      <path d="M14 34h44M14 50h36M14 66h44" stroke-width="4" stroke="#8A8078"/>
+      <path d="M88 34h44M88 50h32M88 66h44" stroke-width="4" stroke="#8A8078"/>
+      <path d="M72 12v78"/>
+    </g>
+
+    <!-- ── 12 · комок бумаги ───────────────────────────────────── -->
+    <g transform="translate(500,318)">
+      <path d="M4 32L26 8l26 6 20 22-8 28-30 12-26-12z" fill="#FBFAF8"/>
+      <path d="M26 8l10 24-24 8M52 14L38 34l22 12M28 76l8-24" stroke-width="4" stroke="#8A8078"/>
+    </g>
+
+    <!-- ── 13 · стикер квадратный ──────────────────────────────── -->
+    <g transform="translate(56,438) rotate(-9)">
+      <rect x="0" y="0" width="86" height="86" rx="4" fill="#C9BEEC"/>
+      <path d="M14 24h58M14 42h40M14 60h50" stroke-width="4" stroke="#5B4A8A"/>
+    </g>
+
+    <!-- ── 14 · карандаш второй, короткий ──────────────────────── -->
+    <g transform="translate(206,470) rotate(-38)">
+      <path d="M0 0h58v20H0z" fill="#A9DDDF"/>
+      <path d="M58 0l22 10-22 10z" fill="#F9C79B"/>
+      <path d="M72 5l8 5-8 5z" fill="#23201D"/>
+      <rect x="-14" y="0" width="14" height="20" rx="3" fill="#F4A9C4"/>
+    </g>
+
+    <!-- ── 15 · листок с формулой ──────────────────────────────── -->
+    <g transform="translate(348,458) rotate(7)">
+      <rect x="0" y="0" width="112" height="80" rx="5" fill="#FEF3D6"/>
+      <path d="M16 30h20M26 20v20" stroke-width="5" stroke="#B08526"/>
+      <path d="M48 22l16 18M48 40l16-18" stroke-width="5" stroke="#B08526"/>
+      <path d="M76 26h20M76 38h20" stroke-width="5" stroke="#B08526"/>
+      <path d="M16 60h80" stroke-width="4" stroke="#D9AE3B"/>
+    </g>
+
+    <!-- ── 16 · ластик ─────────────────────────────────────────── -->
+    <g transform="translate(516,470) rotate(16)">
+      <rect x="0" y="0" width="64" height="34" rx="6" fill="#F2B8B5"/>
+      <path d="M0 20h64" stroke-width="4"/>
+    </g>
+
+    <!-- ── 17 · вторая скрепка ─────────────────────────────────── -->
+    <g transform="translate(268,562) rotate(-24)">
+      <path d="M8 52V18a14 14 0 0 1 28 0v42a22 22 0 0 1-44 0V24" stroke-width="7"/>
+    </g>
+
+    <!-- ── 18 · стикер узкий ───────────────────────────────────── -->
+    <g transform="translate(430,572) rotate(12)">
+      <rect x="0" y="0" width="96" height="58" rx="4" fill="#FDDD96"/>
+      <path d="M14 20h68M14 36h44" stroke-width="4" stroke="#8A6A18"/>
+    </g>
+
+    <!-- ── 19 · кружка вторая ──────────────────────────────────── -->
+    <g transform="translate(96,590)">
+      <path d="M0 10h54v40a14 14 0 0 1-14 14H14A14 14 0 0 1 0 50z" fill="#F9C79B"/>
+      <path d="M54 20h12a12 12 0 0 1 0 24H54"/>
+      <ellipse cx="27" cy="10" rx="27" ry="8" fill="#FBFAF8"/>
+    </g>
+
+    <!-- ── 20 · комок бумаги второй ────────────────────────────── -->
+    <g transform="translate(576,586)">
+      <path d="M4 26L22 6l22 6 16 18-6 24-26 10-22-10z" fill="#FBFAF8"/>
+      <path d="M22 6l8 20-20 6M44 12L32 28l18 10" stroke-width="4" stroke="#8A8078"/>
+    </g>
+
+  </g>
+</defs>
+
+<rect width="640" height="640" fill="#FFFFFF"/>
+
+<!-- Девять копий со сдвигом: то, что вылезло за край, приходит с другой стороны -->
+<g clip-path="url(#tile)">
+  <use href="#items" x="-640" y="-640"/><use href="#items" x="0" y="-640"/><use href="#items" x="640" y="-640"/>
+  <use href="#items" x="-640" y="0"/>   <use href="#items" x="0" y="0"/>   <use href="#items" x="640" y="0"/>
+  <use href="#items" x="-640" y="640"/> <use href="#items" x="0" y="640"/> <use href="#items" x="640" y="640"/>
+</g>
+
+<rect width="640" height="640" filter="url(#grain)" opacity=".12"/>
+</svg>

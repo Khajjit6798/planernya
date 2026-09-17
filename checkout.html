@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+     CHECKOUT · страница оплаты
+     Стили: styles.css (общие) + checkout.css. Логика: checkout.js
+     ═══════════════════════════════════════════════════════════════ -->
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBFAF9">
+<meta name="format-detection" content="telephone=no">
+<meta name="robots" content="noindex">
+
+<title>Оформление заказа — OG Daily Planners</title>
+<meta name="description" content="Выбери тариф и способ оплаты планеров подготовки к ОГЭ и ЕГЭ. Доступ приходит сразу после оплаты.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="checkout.css">
+</head>
+<body class="checkout-page">
+
+<!-- ═══ ШАПКА ══════════════════════════════════════════════════ -->
+<header class="chk-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 44 44" width="38" height="38" role="img">
+          <rect width="44" height="44" rx="13" fill="#332B27"/>
+          <rect x="13" y="5.5" width="3.6" height="6.5" rx="1.8" fill="#FFDB3F"/>
+          <rect x="27.4" y="5.5" width="3.6" height="6.5" rx="1.8" fill="#FFDB3F"/>
+          <rect x="8.5" y="9" width="27" height="6.2" rx="2.6" fill="#8D5EBA"/>
+          <rect x="8.5" y="15" width="27" height="20.5" rx="3.4" fill="#453B35"/>
+          <rect x="12" y="18.6" width="8.4" height="6.6" rx="2.1" fill="#FFDB3F"/>
+          <rect x="23.6" y="18.6" width="8.4" height="6.6" rx="2.1" fill="#2A231F"/>
+          <rect x="12" y="27.2" width="8.4" height="5.2" rx="2" fill="#2A231F"/>
+          <rect x="23.6" y="27.2" width="8.4" height="5.2" rx="2" fill="#DA6889"/>
+        </svg>
+      </span>
+      <span class="logo-txt">OG <b>Daily&nbsp;Planners</b></span>
+    </a>
+    <a href="index.html#price" class="chk-back">← Вернуться назад</a>
+  </div>
+</header>
+
+<main class="chk-grid">
+
+  <!-- Заголовок -->
+  <div class="chk-step">
+    <h1 class="chk-title">Два шага — и планер твой</h1>
+    <p class="chk-sub">Оставь контакт и оплати. Ссылка на копию
+      таблицы придёт сразу после оплаты — обычно в течение пары минут.</p>
+  </div>
+
+  <!-- Шаг 1 · тариф -->
+  <div class="chk-step">
+    <div class="chk-legend"><i>✓</i><b>Что берём</b></div>
+    <div class="chk-plans chk-one">
+      <div class="chk-plan on" role="radio" aria-checked="true" tabindex="0"
+           data-plan="oge-ege" data-price="899" data-name="Планер ОГЭ и ЕГЭ">
+        <div class="chk-badge">Один продукт — оба экзамена</div>
+
+        <div class="chk-head">
+          <div class="chk-radio" aria-hidden="true"></div>
+          <div>
+            <div class="chk-name">Планер ОГЭ и ЕГЭ</div>
+            <div class="chk-desc">Шесть листов в Google Таблицах</div>
+          </div>
+          <div class="chk-pricebox">
+            <span class="chk-old">1 198 ₽</span>
+            <span class="chk-price">899 ₽</span>
+          </div>
+        </div>
+
+        <ul class="chk-feat">
+          <li>Темы экзамена уже вписаны</li>
+          <li>Обе шкалы: оценка и тестовый балл</li>
+          <li>11 цветовых схем на выбор</li>
+          <li>Доступ навсегда, обновления бесплатно</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Шаг 2 · контакт -->
+  <div class="chk-step">
+    <div class="chk-legend"><i>1</i><b>Куда прислать доступ</b></div>
+    <div class="chk-form">
+      <div class="chk-row">
+        <div class="chk-field">
+          <label for="cName">Имя</label>
+          <input type="text" id="cName" name="name" autocomplete="name"
+                 placeholder="Как к тебе обращаться">
+        </div>
+        <div class="chk-field">
+          <label for="cEmail">Телеграм или почта</label>
+          <input type="text" id="cEmail" name="contact" inputmode="email"
+                 autocomplete="email" placeholder="@username или mail@mail.ru">
+        </div>
+      </div>
+
+      <div class="chk-field" style="margin-bottom:6px">
+        <label for="cPromo">Промокод, если есть</label>
+        <div class="chk-promo">
+          <input type="text" id="cPromo" name="promo" autocomplete="off"
+                 autocapitalize="characters" placeholder="Введи код">
+          <button type="button" class="btn btn-2" id="applyPromo">Применить</button>
+        </div>
+        <p class="chk-promo-msg" id="promoMsg" role="status"></p>
+      </div>
+
+      <p class="chk-hint">На этот контакт придёт ссылка на твою копию таблицы.
+        Доступ навсегда, обновления бесплатно.</p>
+      <label class="agree" style="margin-top:14px">
+        <input type="checkbox" id="cAgree" name="agree" checked>
+        <span>Согласен на обработку персональных данных и принимаю
+          <a href="policy.html" target="_blank" rel="noopener">политику</a>
+          и <a href="oferta.html" target="_blank" rel="noopener">оферту</a></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Шаг 3 · оплата -->
+  <div class="chk-step">
+    <div class="chk-legend"><i>2</i><b>Чем удобнее оплатить</b></div>
+    <div class="chk-form">
+      <div class="chk-methods" id="chkMethods" role="radiogroup" aria-label="Способ оплаты">
+        <div class="chk-method on" role="radio" aria-checked="true" tabindex="0" data-method="card">
+          <span class="pay-icon" aria-hidden="true">💳</span>
+          <span class="pay-name">Банковская карта</span>
+          <span class="pay-tag">Мир, Visa</span>
+        </div>
+        <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="sbp">
+          <span class="pay-icon" aria-hidden="true">⚡</span>
+          <span class="pay-name">СБП по QR-коду</span>
+          <span class="pay-tag">Без комиссии</span>
+        </div>
+        <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="yoomoney">
+          <span class="pay-icon" aria-hidden="true">🟣</span>
+          <span class="pay-name">ЮMoney</span>
+          <span class="pay-tag">Популярно</span>
+        </div>
+        <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="robokassa">
+          <span class="pay-icon" aria-hidden="true">🟢</span>
+          <span class="pay-name">Робокасса</span>
+          <span class="pay-tag">Любой банк</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Итог -->
+  <div class="chk-step">
+    <div class="chk-total">
+      <div>
+        <div class="chk-total-label">К оплате</div>
+        <div>
+          <span class="chk-total-sum" id="totalSum">899 ₽</span>
+          <span class="chk-total-old" id="totalOld" style="display:none"></span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-1" id="payBtn">Оплатить и получить доступ →</button>
+    </div>
+    <div class="chk-trust">
+      <span>🔒 Оплата через защищённое соединение</span>
+      <span>⚡ Доступ приходит сразу</span>
+      <span>↩️ Возврат в течение 14 дней</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="chk-footer">
+  <p>Что-то не сходится? <a href="index.html#contact">Напиши нам</a> — ответим в течение дня.</p>
+  <p style="margin-top:6px"><a href="oferta.html">Оферта</a> · <a href="policy.html">Политика данных</a></p>
+  <p style="margin-top:6px;opacity:.7">© <span id="chkYear">2026</span> OG Daily Planners · Планеры подготовки к ОГЭ и ЕГЭ</p>
+</footer>
+
+<script>
+  document.documentElement.classList.remove('no-js');
+  document.getElementById('chkYear').textContent = new Date().getFullYear();
+</script>
+<script src="checkout.js"></script>
+
+</body>
+</html>

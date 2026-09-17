@@ -1,0 +1,253 @@
+/* ══════════════════════════════════════════════════════════════════
+   CHECKOUT · страница оплаты
+   Базовые переменные и кнопки берутся из styles.css — здесь только
+   то, что нужно самой странице.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. КАРКАС ───────────────────────────────────────────────────── */
+/* 100vh на мобильных включает адресную строку и страница «прыгает».
+   svh считает видимую часть честно, vh оставлен запасным вариантом. */
+.checkout-page{background:var(--paper);min-height:100vh;display:flex;flex-direction:column}
+@supports (min-height:100svh){ .checkout-page{min-height:100svh} }
+
+.checkout-page::before{
+  content:'';position:fixed;inset:-10%;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(42% 46% at 12%  8%,  #F4A9C4 0%, transparent 62%),
+    radial-gradient(38% 42% at 88% 12%,  #C9BEEC 0%, transparent 60%),
+    radial-gradient(46% 40% at 78% 52%,  #A9DDDF 0%, transparent 62%),
+    radial-gradient(40% 44% at  8% 58%,  #FDDD96 0%, transparent 60%),
+    radial-gradient(44% 38% at 50% 96%,  #C9E29B 0%, transparent 62%),
+    var(--paper)
+}
+/* Вуаль здесь плотнее: на странице оплаты важнее спокойствие, чем цвет */
+.checkout-page::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.30'/%3E%3C/svg%3E"),
+    rgba(251,250,248,.80)
+}
+
+/* ─── 2. ШАПКА ────────────────────────────────────────────────────── */
+.chk-header{
+  padding:calc(16px + var(--safe-t)) 0 16px;
+  border-bottom:1px solid var(--line);
+  background:rgba(255,252,248,.96);
+  position:sticky;top:0;z-index:50
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .chk-header{
+    background:rgba(255,252,248,.86);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+  }
+}
+.chk-header .wrap{display:flex;align-items:center;justify-content:space-between}
+.chk-back{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;padding:10px 18px;border-radius:999px;
+  border:1.5px solid var(--line);background:#fff;
+  font-size:14px;font-weight:600;color:var(--ink);transition:.2s;flex-shrink:0
+}
+
+/* ─── 3. СЕТКА ────────────────────────────────────────────────────── */
+.chk-grid{
+  max-width:900px;margin:0 auto;width:100%;
+  padding:36px 20px calc(40px + var(--safe-b));
+  display:grid;grid-template-columns:1fr;grid-gap:26px;gap:26px
+}
+@media(min-width:880px){ .chk-grid{padding:56px 24px} }
+
+.chk-title{
+  font-family:Unbounded,Manrope,sans-serif;
+  font-size:clamp(24px,5vw,38px);font-weight:700;
+  margin-bottom:8px;letter-spacing:-.03em;line-height:1.15
+}
+.chk-sub{color:var(--ink-2);font-size:15px}
+
+/* Шаги: цифра + подпись */
+.chk-legend{display:flex;align-items:center;margin-bottom:14px}
+.chk-legend i{
+  width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;
+  font-style:normal;font-size:13px;font-weight:800;margin-right:11px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.chk-legend b{font-size:17px;font-weight:800}
+
+/* ─── 4. ТАРИФЫ ───────────────────────────────────────────────────── */
+.chk-plans{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:14px;gap:14px}
+@media(max-width:760px){ .chk-plans{grid-template-columns:1fr;gap:12px;grid-gap:12px} }
+
+.chk-plan{
+  background:var(--card);border:2px solid var(--ink);border-radius:var(--r-m);
+  padding:24px;cursor:default;position:relative;
+  box-shadow:6px 6px 0 var(--ink);
+  -webkit-tap-highlight-color:transparent
+}
+
+/* Верхняя строка: кружок · название · цена.
+   Цена лежит в своей колонке, поэтому «899 ₽» и зачёркнутая
+   старая больше не слипаются в «899 ₽1 198 ₽». */
+.chk-head{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;column-gap:14px
+}
+.chk-plan .chk-name{font-size:18px;font-weight:800;line-height:1.25}
+.chk-plan .chk-desc{font-size:13px;color:var(--muted);margin-top:2px}
+
+.chk-pricebox{text-align:right;line-height:1.15}
+.chk-plan .chk-old{
+  display:block;font-size:13px;color:var(--muted);
+  text-decoration:line-through;margin-bottom:2px
+}
+.chk-plan .chk-price{
+  display:block;font-family:Unbounded,sans-serif;
+  font-size:30px;font-weight:700;letter-spacing:-.03em;white-space:nowrap
+}
+
+/* Состав — чтобы человек на шаге оплаты ещё раз увидел, что берёт */
+.chk-feat{
+  list-style:none;margin:18px 0 0;padding:16px 0 0;
+  border-top:1px dashed var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:8px 18px
+}
+.chk-feat li{
+  position:relative;padding-left:22px;
+  font-size:13.5px;color:var(--ink-2);line-height:1.4
+}
+.chk-feat li::before{
+  content:'✓';position:absolute;left:0;top:0;
+  color:var(--grass-d);font-weight:800
+}
+
+.chk-plan .chk-badge{
+  position:absolute;top:-12px;left:24px;
+  background:var(--lime);color:var(--ink);font-size:11px;font-weight:800;
+  padding:6px 14px;border-radius:99px;white-space:nowrap;
+  box-shadow:2px 2px 0 var(--ink)
+}
+/* Кружок выбора остаётся: он показывает, что тариф выбран */
+.chk-radio{
+  width:24px;height:24px;border-radius:50%;border:2px solid var(--ink);
+  background:var(--ink);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0
+}
+.chk-radio::after{content:'';width:9px;height:9px;border-radius:50%;background:#fff}
+
+@media(max-width:560px){
+  .chk-plan{padding:20px 16px}
+  /* На узком экране цена уходит под название — иначе она жмёт
+     заголовок в две-три строки */
+  .chk-head{grid-template-columns:auto 1fr;row-gap:14px}
+  .chk-pricebox{grid-column:1 / -1;text-align:left;
+    display:flex;align-items:baseline}
+  .chk-plan .chk-old{margin:0 0 0 10px;order:2}
+  .chk-plan .chk-price{font-size:34px}
+  .chk-feat{grid-template-columns:1fr;gap:7px}
+  .chk-plan .chk-badge{left:16px}
+}
+
+/* ─── 5. ФОРМА ────────────────────────────────────────────────────── */
+.chk-form{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-l);padding:26px;box-shadow:var(--sh-1)
+}
+@media(max-width:560px){ .chk-form{padding:20px 18px} }
+.chk-form h3{font-size:18px;font-weight:800;margin-bottom:18px;
+  font-family:Manrope,sans-serif;letter-spacing:0}
+.chk-row{display:grid;grid-template-columns:1fr 1fr;grid-gap:14px;gap:14px;margin-bottom:14px}
+@media(max-width:560px){ .chk-row{grid-template-columns:1fr} }
+.chk-field{position:relative}
+.chk-field label{display:block;font-size:12.5px;font-weight:700;
+  color:var(--ink-2);margin-bottom:6px}
+/* 16px обязательны: при меньшем размере iOS зумит страницу на фокусе */
+.chk-field input{
+  width:100%;padding:14px;border-radius:var(--r-s);border:1.5px solid var(--line);
+  font-family:inherit;font-size:16px;color:var(--ink);background:#fff;
+  transition:.2s;-webkit-appearance:none;appearance:none
+}
+.chk-field input:focus{outline:none;border-color:var(--blue);
+  box-shadow:0 0 0 3px var(--blue-l)}
+.chk-field input::placeholder{color:#B8B8C8}
+.chk-field input.bad{border-color:var(--pink);background:#FFF7F8}
+.chk-hint{font-size:12.5px;color:var(--muted);margin:0}
+
+/* Промокод */
+.chk-promo{display:flex;margin-bottom:6px}
+.chk-promo input{flex:1;min-width:0;margin-right:8px}
+.chk-promo .btn{min-height:50px;padding:0 20px;font-size:13.5px;
+  border-radius:var(--r-s);white-space:nowrap;flex-shrink:0}
+.chk-promo-msg{font-size:12.5px;font-weight:600;margin-top:8px;min-height:18px}
+.chk-promo-msg.ok{color:#2E7D4F}
+.chk-promo-msg.no{color:#C2415C}
+
+/* ─── 6. СПОСОБЫ ОПЛАТЫ ───────────────────────────────────────────── */
+.chk-methods{display:grid;grid-template-columns:repeat(2,1fr);grid-gap:10px;gap:10px}
+@media(max-width:560px){ .chk-methods{grid-template-columns:1fr} }
+.chk-method{
+  display:flex;align-items:center;padding:13px 15px;border-radius:var(--r-s);
+  border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:.2s;
+  font-size:14px;font-weight:600;min-height:60px;-webkit-tap-highlight-color:transparent
+}
+.chk-method.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.chk-method .pay-icon{
+  width:36px;height:36px;border-radius:9px;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;margin-right:12px
+}
+.chk-method.on .pay-icon{background:rgba(255,255,255,.15)}
+.chk-method .pay-name{flex:1;min-width:0}
+.chk-method .pay-tag{
+  font-size:10.5px;padding:3px 8px;border-radius:99px;background:var(--lime);
+  color:var(--ink);font-weight:700;margin-left:8px;flex-shrink:0;white-space:nowrap
+}
+.chk-method.on .pay-tag{background:rgba(255,255,255,.2);color:#fff}
+
+/* ─── 7. ИТОГ ─────────────────────────────────────────────────────── */
+.chk-total{
+  background:linear-gradient(150deg,var(--ink),#33344F);color:#fff;
+  border-radius:var(--r-m);padding:22px 26px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;margin-bottom:12px
+}
+.chk-total-label{font-size:13px;opacity:.7;font-weight:600}
+.chk-total-sum{font-family:Unbounded,sans-serif;font-size:30px;font-weight:700;line-height:1.1}
+.chk-total-old{font-size:14px;opacity:.55;text-decoration:line-through;margin-left:10px}
+.chk-total .btn{min-height:54px;padding:15px 32px;font-size:16px}
+@media(max-width:560px){
+  .chk-total{padding:20px;flex-direction:column;align-items:stretch;text-align:center}
+  .chk-total .btn{width:100%;margin-top:16px}
+  .chk-total-sum{font-size:34px}
+}
+
+.chk-trust{display:flex;align-items:center;flex-wrap:wrap;
+  font-size:12.5px;color:var(--muted);margin:0 -8px}
+.chk-trust span{display:flex;align-items:center;margin:4px 8px}
+
+/* ─── 8. ПОДВАЛ ───────────────────────────────────────────────────── */
+.chk-footer{text-align:center;padding:26px 20px calc(30px + var(--safe-b));
+  font-size:12.5px;color:var(--muted);margin-top:auto}
+.chk-footer a{color:var(--ink-2);text-decoration:underline}
+
+/* ─── 9. ПОЯВЛЕНИЕ БЛОКОВ ─────────────────────────────────────────── */
+.chk-step{opacity:0;transform:translateY(16px);animation:chkIn .5s forwards}
+.chk-step:nth-child(1){animation-delay:0s}
+.chk-step:nth-child(2){animation-delay:.08s}
+.chk-step:nth-child(3){animation-delay:.16s}
+.chk-step:nth-child(4){animation-delay:.24s}
+.chk-step:nth-child(5){animation-delay:.32s}
+@keyframes chkIn{to{opacity:1;transform:none}}
+
+/* ─── 10. НАВЕДЕНИЕ ТОЛЬКО ДЛЯ МЫШИ ───────────────────────────────── */
+/* На тачскрине :hover залипает после тапа — поэтому в медиазапросе */
+@media (hover:hover) and (pointer:fine){
+  .chk-back:hover{border-color:var(--blue);background:var(--blue-l)}
+  .chk-method:hover{border-color:var(--blue);background:var(--blue-l)}
+  .chk-method.on:hover{background:var(--ink)}
+}
+.chk-method:active{transform:scale(.99)}
+.chk-method:focus-visible{
+  outline:3px solid var(--blue);outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){
+  .chk-step{opacity:1;transform:none;animation:none}
+  *{transition:none!important}
+}

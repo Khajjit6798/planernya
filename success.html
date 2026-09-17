@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBFAF9">
+<title>Спасибо за оплату — OG Daily Planners</title>
+<meta name="description" content="Оплата прошла успешно. Ссылка на копию таблицы уже в пути.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ═══ СТРАНИЦА УСПЕХА ═══════════════════════════════════════════ */
+  .ok-page{
+    background:var(--paper);min-height:100vh;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px;position:relative
+  }
+  .ok-page::before{
+    content:'';position:fixed;inset:-10%;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(42% 46% at 12%  8%, #DA6889 0%, transparent 62%),
+      radial-gradient(38% 42% at 88% 12%, #8D5EBA 0%, transparent 60%),
+      radial-gradient(46% 40% at 78% 52%, #337AA5 0%, transparent 62%),
+      radial-gradient(44% 38% at 50% 96%, #D4AA82 0%, transparent 62%),
+      var(--paper)
+  }
+  .ok-page::after{
+    content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:rgba(251,250,248,.62)
+  }
+
+  .ok-box{
+    max-width:520px;width:100%;background:#fff;border:1.5px solid var(--line);
+    border-radius:28px;padding:48px 36px;box-shadow:var(--sh-3);
+    animation:okIn .6s cubic-bezier(.2,.7,.3,1) both
+  }
+  @keyframes okIn{
+    from{opacity:0;transform:translateY(20px) scale(.98)}
+    to{opacity:1;transform:none}
+  }
+
+  .ok-ico{
+    width:80px;height:80px;border-radius:50%;background:var(--mint);
+    display:flex;align-items:center;justify-content:center;
+    font-size:36px;margin:0 auto 22px;box-shadow:0 8px 24px rgba(79,122,91,.18)
+  }
+  .ok-box h1{
+    font-family:Unbounded,Manrope,sans-serif;
+    font-size:clamp(24px,5vw,32px);font-weight:700;
+    margin-bottom:12px;letter-spacing:-.03em;line-height:1.2
+  }
+  .ok-box>p{
+    color:var(--ink-2);margin-bottom:28px;font-size:15px;line-height:1.55
+  }
+
+  .ok-detail{
+    background:var(--paper);border-radius:var(--r-m);
+    border:1px solid var(--line);padding:20px 24px;
+    text-align:left;margin-bottom:28px
+  }
+  .ok-detail div{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:8px 0;font-size:14px;border-bottom:1px dashed var(--line)
+  }
+  .ok-detail div:last-child{border-bottom:none}
+  .ok-detail b{color:var(--ink);font-weight:700}
+  .ok-detail span{color:var(--muted);font-weight:600}
+
+  .ok-box .btn{width:100%;min-height:54px;font-size:16px}
+
+  .ok-footer{
+    margin-top:auto;padding:26px 20px calc(30px + var(--safe-b));
+    font-size:12.5px;color:var(--muted);text-align:center
+  }
+
+  @media(max-width:560px){
+    .ok-box{padding:32px 22px;border-radius:var(--r-l)}
+    .ok-ico{width:68px;height:68px;font-size:30px}
+    .ok-detail{padding:16px 18px}
+  }
+</style>
+</head>
+<body class="ok-page">
+
+<div class="ok-box">
+  <div class="ok-ico">🎉</div>
+  <h1>Оплата прошла!</h1>
+  <p id="okTxt">Ссылка на твою копию таблицы уже в пути.</p>
+
+  <div class="ok-detail" id="okDetail" style="display:none">
+    <div><span>Тариф</span><b id="okPlan">—</b></div>
+    <div><span>Сумма</span><b id="okSum">—</b></div>
+    <div><span>Контакт</span><b id="okContact">—</b></div>
+  </div>
+
+  <a href="index.html" class="btn btn-1">На главную →</a>
+</div>
+
+<div class="ok-footer">
+  © <span id="okYear">2026</span> OG Daily Planners · Планеры подготовки к ОГЭ и ЕГЭ
+</div>
+
+<script>
+  document.getElementById('okYear').textContent = new Date().getFullYear();
+
+  (function(){
+    try{
+      var o = JSON.parse(sessionStorage.getItem('og_order') || '{}');
+      if (o.planName) {
+        document.getElementById('okDetail').style.display = '';
+        document.getElementById('okPlan').textContent = o.planName;
+        document.getElementById('okSum').textContent = (o.price || 0).toLocaleString('ru-RU') + ' ₽';
+        document.getElementById('okContact').textContent = o.contact || '—';
+        document.getElementById('okTxt').textContent =
+          'Сохрани эту страницу. Ссылка на копию таблицы придёт на указанный контакт в течение 10 минут.';
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
+</html>
