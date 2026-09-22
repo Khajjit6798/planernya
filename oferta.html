@@ -43,7 +43,16 @@
   .rekv div:last-child{border-bottom:none}
   .rekv span{flex:0 0 210px;color:var(--muted);font-size:14px}
   .rekv b{color:var(--ink);font-size:14.5px}
-  @media(max-width:560px){ .rekv span{flex-basis:100%} }
+  /* Банковские реквизиты: моноширинный шрифт для цифр, чтобы их
+     было удобно сверять и переписывать в платёжку */
+  .rekv-bank .num{font-family:"Cascadia Mono",Consolas,"SF Mono",monospace;
+    font-size:15px;letter-spacing:.02em;user-select:all}
+  .bank-note{font-size:13px;color:var(--muted);margin-top:12px;
+    padding-left:14px;border-left:3px solid var(--line)}
+  @media(max-width:560px){
+    .rekv span{flex-basis:100%}
+    .rekv-bank .num{font-size:13.5px;word-break:break-all}
+  }
   .note{background:var(--card);border:1px solid var(--line);
     border-radius:var(--r-m);padding:18px 20px;margin:26px 0}
   .note p:last-child{margin-bottom:0}
@@ -158,6 +167,28 @@
   <div><span>Телефон</span><b><a href="tel:+79120180393">+7 912 018-03-93</a></b></div>
   <div><span>Электронная почта</span><b><a href="mailto:girlsmoom@yandex.ru">girlsmoom@yandex.ru</a></b></div>
 </div>
+
+
+<h2>14. Банковские реквизиты для оплаты</h2>
+<p>Оплата по настоящему Договору производится в безналичном порядке
+по следующим реквизитам. При переводе обязательно указывать назначение
+платежа — без него платёж может быть не зачислен.</p>
+
+<div class="rekv rekv-bank">
+  <div><span>Получатель</span><b>Куприянова Софья Сергеевна</b></div>
+  <div><span>Номер счёта</span><b class="num">40817810900090970270</b></div>
+  <div><span>Банк получателя</span><b>АО «ТБанк»</b></div>
+  <div><span>БИК банка</span><b class="num">044525974</b></div>
+  <div><span>Корреспондентский счёт</span><b class="num">30101810145250000974</b></div>
+  <div><span>ИНН банка</span><b class="num">7710140679</b></div>
+  <div><span>КПП банка</span><b class="num">771301001</b></div>
+  <div><span>Назначение платежа</span><b>Перевод средств по договору № 5201219170
+    Куприянова Софья Сергеевна. НДС не облагается</b></div>
+</div>
+
+<p class="bank-note">ИНН и КПП в этом разделе принадлежат банку и нужны только
+для оформления платёжного поручения. ИНН Продавца указан выше, в разделе
+«Реквизиты Продавца».</p>
 
 <p style="margin-top:40px;font-size:12.5px;color:var(--muted)">
   © <span id="y"></span> OG Daily Planners · <a href="index.html">на главную</a> ·
