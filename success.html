@@ -80,6 +80,13 @@
     font-size:12.5px;color:var(--muted);text-align:center
   }
 
+  /* Плашка тестового заказа — чтобы не спутать с настоящим */
+  .ok-test{
+    background:var(--sunny);color:var(--ink);
+    font-size:13px;font-weight:800;border-radius:999px;
+    padding:8px 16px;margin:0 auto 20px;display:inline-block
+  }
+
   @media(max-width:560px){
     .ok-box{padding:32px 22px;border-radius:var(--r-l)}
     .ok-ico{width:68px;height:68px;font-size:30px}
@@ -107,21 +114,126 @@
   © <span id="okYear">2026</span> OG Daily Planners · Планеры подготовки к ОГЭ и ЕГЭ
 </div>
 
+<!-- EmailJS — отправка письма покупателю прямо из браузера.
+     Сервер для этого не нужен: библиотека обращается к их API,
+     а текст письма лежит в шаблоне на их стороне.
+     Бесплатно до 200 писем в месяц. -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   document.getElementById('okYear').textContent = new Date().getFullYear();
 
-  (function(){
-    try{
-      var o = JSON.parse(sessionStorage.getItem('og_order') || '{}');
-      if (o.planName) {
-        document.getElementById('okDetail').style.display = '';
-        document.getElementById('okPlan').textContent = o.planName;
-        document.getElementById('okSum').textContent = (o.price || 0).toLocaleString('ru-RU') + ' ₽';
-        document.getElementById('okContact').textContent = o.contact || '—';
-        document.getElementById('okTxt').textContent =
-          'Сохрани эту страницу. Ссылка на копию таблицы придёт на указанный контакт в течение 10 минут.';
-      }
-    } catch(e) {}
+  /* ═══ НАСТРОЙКИ ОТПРАВКИ ПИСЬМА ══════════════════════════════
+     Заполняется один раз на emailjs.com:
+       1. Зарегистрироваться, подключить свою почту (Яндекс подходит)
+       2. Email Services → скопировать Service ID
+       3. Email Templates → создать шаблон, скопировать Template ID
+       4. Account → скопировать Public Key
+     Пока поля пустые, письмо не отправляется, но страница
+     работает и показывает детали заказа.                        */
+  var MAIL = {
+    publicKey : '',                 // ← Public Key с emailjs.com
+    serviceId : '',                 // ← Service ID
+    templateId: '',                 // ← Template ID (письмо покупателю)
+    copyTo    : 'girlsmoom@yandex.ru',   // копия заказа продавцу
+    tableLink : 'https://docs.google.com/spreadsheets/d/1023zEdxJcH2_39EFjNKstUvvteJHusowIeBXAf2SmJs/copy'
+  };
+
+  (function () {
+    var o = {};
+    try { o = JSON.parse(sessionStorage.getItem('og_order') || '{}'); } catch (e) {}
+
+    var txt   = document.getElementById('okTxt');
+    var есть  = !!o.planName;
+
+    /* ─── Показываем детали заказа ────────────────────────────── */
+    if (есть) {
+      document.getElementById('okDetail').style.display = '';
+      document.getElementById('okPlan').textContent    = o.planName;
+      document.getElementById('okSum').textContent     =
+        (o.price || 0).toLocaleString('ru-RU') + ' ₽';
+      document.getElementById('okContact').textContent = o.contact || '—';
+    }
+
+    /* ─── Тестовый заказ помечаем прямо на странице ───────────── */
+    if (o.test) {
+      var м = document.createElement('div');
+      м.className = 'ok-test';
+      м.textContent = 'Тестовый заказ. Оплата не производилась.';
+      document.querySelector('.ok-box').prepend(м);
+    }
+
+    /* ─── Контакт похож на почту? ─────────────────────────────── */
+    var контакт = (o.contact || '').trim();
+    var почта = этоПочта(контакт);
+    function этоПочта(v) {
+      return v.indexOf('@') > 0 && v.indexOf('.') > v.indexOf('@') ? v : '';
+    }
+
+    if (!есть) {
+      txt.textContent = 'Если оплата прошла, ссылка придёт на указанный контакт.';
+      return;
+    }
+
+    /* ─── Настройки не заполнены — честно говорим об этом ─────── */
+    if (!MAIL.publicKey || !MAIL.serviceId || !MAIL.templateId) {
+      txt.innerHTML = 'Заказ принят. Ссылку на планер пришлём на <b>' +
+        экранировать(контакт) + '</b> в течение 10 минут.';
+      if (window.console) console.log('ЗАКАЗ (письмо не настроено):', o);
+      return;
+    }
+
+    /* ─── Контакт — телеграм, не почта: письмо слать некуда ───── */
+    if (!почта) {
+      txt.innerHTML = 'Заказ принят. Ссылку пришлём в телеграм <b>' +
+        экранировать(контакт) + '</b> в течение 10 минут.';
+      отправить(MAIL.copyTo, true);     // продавцу копию всё равно шлём
+      return;
+    }
+
+    /* ─── Отправляем письмо покупателю ────────────────────────── */
+    txt.textContent = 'Отправляем письмо на ' + почта + '…';
+    emailjs.init({ publicKey: MAIL.publicKey });
+    отправить(почта, false);
+
+    function отправить(кому, толькоКопия) {
+      var данные = {
+        to_email   : кому,
+        name       : o.name || 'друг',
+        plan       : o.planName,
+        price      : (o.price || 0).toLocaleString('ru-RU'),
+        method     : o.methodName || '—',
+        date       : дата(o.date),
+        table_link : MAIL.tableLink,
+        test_note  : o.test ? '\n⚠ ТЕСТОВЫЙ ЗАКАЗ. Оплата не производилась.\n' : '',
+        copy_to    : MAIL.copyTo
+      };
+      emailjs.send(MAIL.serviceId, MAIL.templateId, данные)
+        .then(function () {
+          if (толькоКопия) return;
+          txt.innerHTML = 'Письмо со ссылкой на планер отправлено на <b>' +
+            экранировать(почта) + '</b>.<br>Если его нет через пару минут — ' +
+            'загляни в «Спам» или напиши нам.';
+        })
+        .catch(function (err) {
+          /* Письмо не ушло — заказ не теряем: он уже у продавца
+             в заявке, и человек видит, что делать дальше. */
+          txt.innerHTML = 'Заказ принят, но письмо не отправилось. ' +
+            'Напиши нам в <a href="https://t.me/ogdailyplanners" ' +
+            'target="_blank" rel="noopener">телеграм</a> — пришлём ссылку вручную.';
+          if (window.console) console.warn('EmailJS:', err);
+        });
+    }
+
+    function дата(iso) {
+      var d = iso ? new Date(iso) : new Date();
+      return d.toLocaleString('ru-RU', { day:'2-digit', month:'2-digit',
+        year:'numeric', hour:'2-digit', minute:'2-digit' });
+    }
+    function экранировать(v) {
+      return String(v).replace(/[&<>"]/g, function (c) {
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c];
+      });
+    }
   })();
 </script>
 

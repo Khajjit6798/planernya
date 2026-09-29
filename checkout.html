@@ -104,7 +104,9 @@
         </div>
       </div>
 
-      <div class="chk-field" style="margin-bottom:6px">
+      <!-- Поле промокода. Скрывается скриптом, пока список кодов
+           в checkout.js пуст: обещать скидку, которой нет, нельзя. -->
+      <div class="chk-field" id="promoField" style="margin-bottom:6px">
         <label for="cPromo">Промокод, если есть</label>
         <div class="chk-promo">
           <input type="text" id="cPromo" name="promo" autocomplete="off"
