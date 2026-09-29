@@ -26,7 +26,7 @@
        Пока ссылки нет — заказ уходит в телеграм, ничего не теряется. */
     robokassa: {
       links: {
-        899: 'https://auth.robokassa.ru/Merchant/Invoice/Q-z-YEZOCk2HnOIuuqelNw'
+        899: 'https://auth.robokassa.ru/Merchant/Invoice/hqDp5keLhEa5SH0jUnUhJQ'
         /* Если когда-нибудь вернём промокоды — на каждую сниженную
            цену нужна отдельная ссылка из кабинета:
            799 — STUDENT, 749 — ОГЭ2027, 720 — ДРУГ.                */
@@ -221,6 +221,18 @@
     el.addEventListener('input', function () { el.classList.remove('bad'); });
   });
 
+  /* Заказ сохраняем СРАЗУ В ДВА хранилища.
+     sessionStorage живёт только в этой вкладке: если оплата уйдёт
+     в приложение банка и вернётся в новой вкладке, заказ там будет
+     пуст — и страница успеха не поймёт, кому слать письмо.
+     localStorage переживает и новую вкладку, и закрытие браузера,
+     поэтому служит запасным путём. */
+  function сохранитьЗаказ(order) {
+    var текст = JSON.stringify(order);
+    try { sessionStorage.setItem('og_order', текст); } catch (e) {}
+    try { localStorage.setItem('og_order', текст); } catch (e) {}
+  }
+
   /* ─── 7. КНОПКА ОПЛАТЫ ──────────────────────────────────────────── */
   payBtn.addEventListener('click', function () {
     var check = validate();
@@ -255,7 +267,7 @@
       order.test = true;
       order.methodName = methodEl.querySelector('.pay-name').textContent;
       order.date = new Date().toISOString();
-      try { sessionStorage.setItem('og_order', JSON.stringify(order)); } catch (e) {}
+      сохранитьЗаказ(order);
       toast('Тестовый режим: оплата пропущена, открываю страницу успеха');
       setTimeout(function () { window.location.href = CONFIG.successUrl; }, 900);
       return;
@@ -294,7 +306,7 @@
       // Сохраняем заказ, чтобы success.html показала детали
       order.methodName = methodEl.querySelector('.pay-name').textContent;
       order.date = new Date().toISOString();
-      try { sessionStorage.setItem('og_order', JSON.stringify(order)); } catch(e) {}
+      сохранитьЗаказ(order);
 
       window.location.href = url;
       return;

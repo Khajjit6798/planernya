@@ -131,16 +131,30 @@
      Пока поля пустые, письмо не отправляется, но страница
      работает и показывает детали заказа.                        */
   var MAIL = {
-    publicKey : '',                 // ← Public Key с emailjs.com
-    serviceId : '',                 // ← Service ID
-    templateId: '',                 // ← Template ID (письмо покупателю)
-    copyTo    : 'girlsmoom@yandex.ru',   // копия заказа продавцу
+    publicKey : 'v1Cl9YvRVospbK4VQ',                 // ← Public Key с emailjs.com
+    serviceId : 'service_vtrjndf',                 // ← Service ID
+    templateId: 'template_33fez3b',                 // ← Template ID (письмо покупателю)
+    copyTo    : 'pophalo90@gmail.com',   // копия заказа продавцу
     tableLink : 'https://docs.google.com/spreadsheets/d/1023zEdxJcH2_39EFjNKstUvvteJHusowIeBXAf2SmJs/copy'
   };
 
   (function () {
+    /* Заказ ищем сначала в этой вкладке, потом в общем хранилище.
+       Второе нужно на случай, когда оплата уходила в приложение
+       банка и покупатель вернулся уже в другой вкладке. */
     var o = {};
     try { o = JSON.parse(sessionStorage.getItem('og_order') || '{}'); } catch (e) {}
+    if (!o.planName) {
+      try { o = JSON.parse(localStorage.getItem('og_order') || '{}'); } catch (e) {}
+    }
+
+    /* Защита от повторной отправки. Страницу можно обновить или
+       открыть из истории — письмо второй раз слать не нужно.
+       Метка привязана к дате заказа, поэтому следующая покупка
+       со своей датой отправится нормально. */
+    var метка = 'og_sent_' + (o.date || '');
+    var ужеОтправлено = false;
+    try { ужеОтправлено = !!localStorage.getItem(метка); } catch (e) {}
 
     var txt   = document.getElementById('okTxt');
     var есть  = !!o.planName;
@@ -190,6 +204,13 @@
       return;
     }
 
+    /* ─── Письмо по этому заказу уже уходило ──────────────────── */
+    if (ужеОтправлено) {
+      txt.innerHTML = 'Письмо со ссылкой на планер отправлено на <b>' +
+        экранировать(почта) + '</b>.<br>Если его нет — загляни в «Спам».';
+      return;
+    }
+
     /* ─── Отправляем письмо покупателю ────────────────────────── */
     txt.textContent = 'Отправляем письмо на ' + почта + '…';
     emailjs.init({ publicKey: MAIL.publicKey });
@@ -210,6 +231,7 @@
       emailjs.send(MAIL.serviceId, MAIL.templateId, данные)
         .then(function () {
           if (толькоКопия) return;
+          try { localStorage.setItem(метка, '1'); } catch (e) {}
           txt.innerHTML = 'Письмо со ссылкой на планер отправлено на <b>' +
             экранировать(почта) + '</b>.<br>Если его нет через пару минут — ' +
             'загляни в «Спам» или напиши нам.';
