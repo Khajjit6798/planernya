@@ -1820,6 +1820,8 @@ footer{position:relative;z-index:1}
 .back-btns{display:flex;gap:10px;margin-bottom:8px}
 .back-btns .btn{flex:1;min-height:48px;font-size:14px;padding:12px 10px}
 
+.back-close2{width:100%;min-height:48px;margin-top:6px}
+
 .back-skip{
   display:block;width:100%;border:none;background:transparent;
   font:600 13px Manrope,sans-serif;color:var(--muted);

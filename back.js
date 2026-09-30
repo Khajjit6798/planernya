@@ -26,7 +26,12 @@
 
   var СВЯЗЬ = {
     telegram: 'https://t.me/ogdailyplanners',
-    mail    : 'pophalo90@gmail.com'
+    mail    : 'pophalo90@gmail.com',
+
+    /* Formspree принимает отправку с сайта и пересылает её письмом.
+       Тот же адрес, что у формы «Остались вопросы» в script.js —
+       заявки сойдутся в одном ящике, и ничего не потеряется. */
+    forma   : 'https://formspree.io/f/mbglqzly'
   };
 
   /* Сколько ждём возврата. Дольше часа — человек уже занят другим,
@@ -106,8 +111,8 @@
         '<textarea class="back-txt" rows="2" ' +
           'placeholder="Можно дописать своими словами"></textarea>' +
         '<div class="back-btns">' +
-          '<a class="btn btn-1 back-send" href="#">Написать в телеграм</a>' +
-          '<a class="btn btn-2 back-mail" href="#">Написать на почту</a>' +
+          '<button type="button" class="btn btn-1 back-ok">Отправить</button>' +
+          '<a class="btn btn-2 back-send" href="#">Написать в телеграм</a>' +
         '</div>' +
         '<button type="button" class="back-skip">Спасибо, просто смотрю</button>' +
       '</div>';
@@ -139,18 +144,69 @@
     }
 
     function обновить() {
-      var t = текст();
       фон.querySelector('.back-send').href =
-        СВЯЗЬ.telegram + '?text=' + encodeURIComponent(t);
-      фон.querySelector('.back-mail').href =
-        'mailto:' + СВЯЗЬ.mail +
-        '?subject=' + encodeURIComponent('Не получилось оплатить на planernya.ru') +
-        '&body=' + encodeURIComponent(t);
+        СВЯЗЬ.telegram + '?text=' + encodeURIComponent(текст());
     }
     обновить();
 
     фон.querySelector('.back-send').setAttribute('target', '_blank');
     фон.querySelector('.back-send').setAttribute('rel', 'noopener');
+
+    /* ─── Отправка через Formspree ─────────────────────────────
+       Кнопка «Отправить» уводит сообщение сразу, не заставляя
+       человека открывать телеграм или почтовую программу.
+       Если сервис не ответил — не теряем написанное и открываем
+       почту с уже готовым письмом.                             */
+    var кнопка = фон.querySelector('.back-ok');
+    кнопка.addEventListener('click', function () {
+      if (!выбор.length && !поле.value.trim()) {
+        поле.focus();
+        поле.setAttribute('placeholder', 'Выбери причину или напиши своими словами');
+        return;
+      }
+
+      var было = кнопка.textContent;
+      кнопка.disabled = true;
+      кнопка.textContent = 'Отправляем…';
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', СВЯЗЬ.forma, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('Accept', 'application/json');
+
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) спасибо();
+        else почтой(было);
+      };
+      xhr.onerror = function () { почтой(было); };
+
+      xhr.send(JSON.stringify({
+        _subject: 'Ушёл с оплаты · planernya.ru',
+        причина : выбор.join('; ') || '—',
+        комментарий: поле.value.trim() || '—',
+        страница: location.href
+      }));
+    });
+
+    function спасибо() {
+      var box = фон.querySelector('.back-box');
+      box.innerHTML =
+        '<h3>Спасибо, получили</h3>' +
+        '<p>Ответим сегодня. Если что-то срочное — пиши в ' +
+        '<a href="' + СВЯЗЬ.telegram + '" target="_blank" rel="noopener">телеграм</a>.</p>' +
+        '<button type="button" class="btn btn-1 back-close2">Закрыть</button>';
+      box.querySelector('.back-close2').addEventListener('click', закрыть);
+      box.querySelector('.back-close2').focus();
+    }
+
+    function почтой(было) {
+      кнопка.disabled = false;
+      кнопка.textContent = было;
+      window.location.href =
+        'mailto:' + СВЯЗЬ.mail +
+        '?subject=' + encodeURIComponent('Не получилось оплатить на planernya.ru') +
+        '&body=' + encodeURIComponent(текст());
+    }
 
     function закрыть() {
       фон.classList.remove('on');
@@ -166,11 +222,9 @@
     фон.addEventListener('click', function (e) { if (e.target === фон) закрыть(); });
     document.addEventListener('keydown', поEsc);
 
-    /* Нажали «написать» — считаем разговор начатым и закрываем */
-    ['.back-send', '.back-mail'].forEach(function (s) {
-      фон.querySelector(s).addEventListener('click', function () {
-        setTimeout(закрыть, 200);
-      });
+    /* Ушёл в телеграм — разговор начат, окно можно убрать */
+    фон.querySelector('.back-send').addEventListener('click', function () {
+      setTimeout(закрыть, 200);
     });
 
     фон.querySelector('.back-x').focus();
