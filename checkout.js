@@ -62,7 +62,7 @@
     testMode: false,
 
     telegram: 'https://t.me/ogdailyplanners',
-    mail    : 'girlsmoom@yandex.ru',
+    mail    : 'pophalo90@gmail.com',
 
     /* ─── ПРОМОКОДЫ ВЫКЛЮЧЕНЫ ──────────────────────────────────────
        Пусто — поле промокода на странице скрывается, любой код

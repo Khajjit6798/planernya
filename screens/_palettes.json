@@ -1,0 +1,176 @@
+{
+ "pastel": {
+  "name": "Пастель",
+  "file": "pal-pastel.png",
+  "note": "нежная розово-лавандовая — как было",
+  "colors": [
+   "#F4A9C4",
+   "#F9C79B",
+   "#FDDD96",
+   "#C9E29B",
+   "#A9DDDF",
+   "#B1CFFD",
+   "#C9BEEC"
+  ],
+  "paper": "#FBFAF8",
+  "ink": "#23201D"
+ },
+ "vishnya": {
+  "name": "Вишня",
+  "file": "pal-vishnya.png",
+  "note": "вишня со сливками — контраст и воздух",
+  "colors": [
+   "#C3132F",
+   "#E06A80",
+   "#E9A6B2",
+   "#F0BFC6",
+   "#C98C86",
+   "#A8434F",
+   "#DE8C97"
+  ],
+  "paper": "#FCFAF7",
+  "ink": "#3A2226"
+ },
+ "lavanda": {
+  "name": "Лаванда",
+  "file": "pal-lavanda.png",
+  "note": "лавандовый раф — сирень и пудра",
+  "colors": [
+   "#A78BD6",
+   "#C0A8E4",
+   "#D5BFEF",
+   "#B6C9E8",
+   "#9FB8DE",
+   "#8E76C4"
+  ],
+  "paper": "#FCFBFE",
+  "ink": "#33294A"
+ },
+ "persik": {
+  "name": "Персик",
+  "file": "pal-persik.png",
+  "note": "персик и небо — тёплое с холодным",
+  "colors": [
+   "#FFBE98",
+   "#FFD5B5",
+   "#FBE0C0",
+   "#CFE2D6",
+   "#A8CDEA",
+   "#BFD9F0",
+   "#E8B49A"
+  ],
+  "paper": "#FFFCF8",
+  "ink": "#3B2A22"
+ },
+ "matcha": {
+  "name": "Матча",
+  "file": "pal-matcha.png",
+  "note": "матча-латте — фисташка и крем",
+  "colors": [
+   "#8FA96B",
+   "#AFC48C",
+   "#CBDCAE",
+   "#DCD9A8",
+   "#B7C79F",
+   "#9FB284"
+  ],
+  "paper": "#FCFCF6",
+  "ink": "#333A29"
+ },
+ "yagoda": {
+  "name": "Ягода",
+  "file": "pal-yagoda.png",
+  "note": "ягодный смузи — фуксия и лиловый",
+  "colors": [
+   "#D6236F",
+   "#E8698F",
+   "#F294B0",
+   "#C77BC4",
+   "#B98BD1",
+   "#DD6FA8",
+   "#A34C8E"
+  ],
+  "paper": "#FEFAFC",
+  "ink": "#42203A"
+ },
+ "more": {
+  "name": "Море",
+  "file": "pal-more.png",
+  "note": "море — бирюза, кобальт, песок",
+  "colors": [
+   "#0F8C8C",
+   "#3FAFA8",
+   "#8FD6D2",
+   "#B9E2D8",
+   "#E3D3B4",
+   "#F0A98F",
+   "#5FA9C4"
+  ],
+  "paper": "#FAFDFC",
+  "ink": "#11332F"
+ },
+ "raduga": {
+  "name": "Радуга",
+  "file": "pal-raduga.png",
+  "note": "радужная пастель — свой цвет на каждый день",
+  "colors": [
+   "#F7A8C4",
+   "#FBC79B",
+   "#FBE59B",
+   "#C6E6A8",
+   "#A9DFD4",
+   "#B7C4F5",
+   "#CDB6EC"
+  ],
+  "paper": "#FEFDFC",
+  "ink": "#332B33"
+ },
+ "grafit": {
+  "name": "Графит",
+  "file": "pal-grafit.png",
+  "note": "графит и лайм — строго, один акцент",
+  "colors": [
+   "#22262B",
+   "#3C434B",
+   "#5A626B",
+   "#767E88",
+   "#9AA1A9",
+   "#B8E62E",
+   "#8FB524"
+  ],
+  "paper": "#FBFBFA",
+  "ink": "#1B1F24"
+ },
+ "kobalt": {
+  "name": "Кобальт",
+  "file": "pal-kobalt.png",
+  "note": "ночной кобальт — синий и янтарь",
+  "colors": [
+   "#1B3A8C",
+   "#2E52A8",
+   "#3E6FD1",
+   "#6A93E0",
+   "#8FAEE9",
+   "#F08B2A",
+   "#4C8FA8"
+  ],
+  "paper": "#FBFBFA",
+  "ink": "#141C2D"
+ },
+ "haki": {
+  "name": "Хаки",
+  "file": "pal-haki.png",
+  "note": "хаки и терракота — земляная, спокойная",
+  "colors": [
+   "#6E7548",
+   "#8B9160",
+   "#B4B183",
+   "#CFC49A",
+   "#C88A62",
+   "#B4573A",
+   "#8E7A55"
+  ],
+  "paper": "#FBFAF4",
+  "ink": "#33301F"
+ }
+}
