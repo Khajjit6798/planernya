@@ -20,8 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
-<link rel="stylesheet" href="checkout.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="checkout.css?v=8">
 </head>
 <body class="checkout-page">
 
@@ -138,16 +138,6 @@
           <span class="pay-name">Банковская карта</span>
           <span class="pay-tag">Мир, Visa</span>
         </div>
-        <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="sbp">
-          <span class="pay-icon" aria-hidden="true">⚡</span>
-          <span class="pay-name">СБП по QR-коду</span>
-          <span class="pay-tag">Без комиссии</span>
-        </div>
-        <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="yoomoney">
-          <span class="pay-icon" aria-hidden="true">🟣</span>
-          <span class="pay-name">ЮMoney</span>
-          <span class="pay-tag">Популярно</span>
-        </div>
         <div class="chk-method" role="radio" aria-checked="false" tabindex="0" data-method="robokassa">
           <span class="pay-icon" aria-hidden="true">🟢</span>
           <span class="pay-name">Робокасса</span>
@@ -188,7 +178,7 @@
   document.documentElement.classList.remove('no-js');
   document.getElementById('chkYear').textContent = new Date().getFullYear();
 </script>
-<!-- ?v=7 — номер версии файлов. Браузер кэширует скрипты и стили
+<!-- ?v=8 — номер версии файлов. Браузер кэширует скрипты и стили
      и при следующем заходе берёт сохранённую копию, не спрашивая
      сервер. Из-за этого правка может «не сработать»: на сервере
      новый файл, а человек видит старый. Так однажды и вышло
@@ -197,8 +187,8 @@
 
      ПРАВИЛО: поправил .js или .css — увеличь номер здесь и во всех
      пяти страницах. Номер общий, чтобы не держать их по отдельности. -->
-<script src="checkout.js?v=7"></script>
-<script src="back.js?v=7"></script>
+<script src="checkout.js?v=8"></script>
+<script src="back.js?v=8"></script>
 
 </body>
 </html>
