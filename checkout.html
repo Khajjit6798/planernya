@@ -20,8 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="checkout.css">
+<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="checkout.css?v=7">
 </head>
 <body class="checkout-page">
 
@@ -120,6 +120,7 @@
         Доступ навсегда, обновления бесплатно.</p>
       <label class="agree" style="margin-top:14px">
         <input type="checkbox" id="cAgree" name="agree" checked>
+          <i class="box" aria-hidden="true"></i>
         <span>Согласен на обработку персональных данных и принимаю
           <a href="policy.html" target="_blank" rel="noopener">политику</a>
           и <a href="oferta.html" target="_blank" rel="noopener">оферту</a></span>
@@ -187,8 +188,17 @@
   document.documentElement.classList.remove('no-js');
   document.getElementById('chkYear').textContent = new Date().getFullYear();
 </script>
-<script src="checkout.js"></script>
-<script src="back.js"></script>
+<!-- ?v=7 — номер версии файлов. Браузер кэширует скрипты и стили
+     и при следующем заходе берёт сохранённую копию, не спрашивая
+     сервер. Из-за этого правка может «не сработать»: на сервере
+     новый файл, а человек видит старый. Так однажды и вышло
+     с тестовым режимом: в репозитории уже стояло false, а браузер
+     показывал true из кэша.
+
+     ПРАВИЛО: поправил .js или .css — увеличь номер здесь и во всех
+     пяти страницах. Номер общий, чтобы не держать их по отдельности. -->
+<script src="checkout.js?v=7"></script>
+<script src="back.js?v=7"></script>
 
 </body>
 </html>
