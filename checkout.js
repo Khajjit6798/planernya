@@ -60,7 +60,7 @@
        false — обычная работа: переход на платёжную форму.
 
        ПЕРЕД ЗАПУСКОМ ПРОДАЖ ПОСТАВИТЬ false.                      */
-    testMode: true,
+    testMode: false,
 
     telegram: 'https://t.me/ogdailyplanners',
     mail    : 'pophalo90@gmail.com',
